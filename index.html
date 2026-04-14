@@ -127,9 +127,28 @@
 
     .poem {
       width: min(760px, 100%);
-      margin: 0 auto;
+      margin: 0;
       font-size: 1.32rem;
       line-height: 1.86;
+    }
+
+    .poem-layout {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 380px);
+      gap: clamp(28px, 6vw, 72px);
+      align-items: start;
+    }
+
+    .poem-photo {
+      position: sticky;
+      top: 28px;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 22px 48px rgba(36, 27, 31, 0.18);
     }
 
     .poem p {
@@ -188,6 +207,17 @@
         line-height: 1.78;
       }
 
+      .poem-layout {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .poem-photo {
+        position: static;
+        order: -1;
+        max-height: 520px;
+      }
+
       .name {
         font-size: 1.72rem;
       }
@@ -210,6 +240,10 @@
         font-size: 1.2rem;
       }
 
+      .poem-layout {
+        grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
+      }
+
       .closing p {
         font-size: 1.9rem;
       }
@@ -222,47 +256,85 @@
       <div class="intro">
         <p class="eyebrow">Her name is</p>
         <h1>Ayesha<span class="mark">&bull;</span></h1>
-        <p class="lede">Some people pass by like a post. Some stay like a feeling.</p>
+        <p class="lede">I met her somewhere between a scroll and a pause, and somehow she stayed.</p>
       </div>
     </section>
 
     <section class="poem-wrap" aria-label="Poem for Ayesha">
-      <article class="poem">
-        <p>I met her somewhere between<br>
-        a scroll and a pause,<br>
-        just another face on a screen&mdash;<br>
-        until she wasn&rsquo;t.</p>
+      <div class="poem-layout">
+        <article class="poem">
+          <p>I met her somewhere between<br>
+          a scroll and a pause&hellip;<br>
+          and somehow,<br>
+          she stayed longer than she should have.</p>
 
-        <p>Brown hair falling soft like evening light,<br>
-        eyes that don&rsquo;t try, yet hold you still,<br>
-        and that tiny mole near her nose&hellip;<br>
-        like a secret the world almost missed.</p>
+          <p>Brown hair,<br>
+          soft like evening light,<br>
+          eyes that don&rsquo;t even try&mdash;<br>
+          but still manage to hold me.</p>
 
-        <p>She&rsquo;s eighteen,<br>
-        but there&rsquo;s something timeless in her smile,<br>
-        something calm, something quietly bright.</p>
+          <p>And that tiny mole near her nose&hellip;<br>
+          I don&rsquo;t know why,<br>
+          but I noticed it<br>
+          like it was meant for me to.</p>
 
-        <p>And her mehendi&mdash;<br>
-        not just patterns on her hands,<br>
-        but stories drawn in curves and lines,<br>
-        like art that speaks without a voice.</p>
+          <p>I thought she was bold,<br>
+          the kind who doesn&rsquo;t care about anything&hellip;<br>
+          but I was wrong.</p>
 
-        <p>I don&rsquo;t know when it happened,<br>
-        or how something so simple felt so real,<br>
-        but somewhere between her laughter<br>
-        and those little details I couldn&rsquo;t ignore&hellip;</p>
+          <p>She&rsquo;s softer than that.<br>
+          Innocent in ways she probably doesn&rsquo;t even realize.<br>
+          And that childish side of hers&hellip;<br>
+          yeah,<br>
+          that&rsquo;s the one that got me.</p>
 
-        <p>she stayed.</p>
+          <p>I don&rsquo;t know her completely&mdash;<br>
+          and maybe that&rsquo;s the problem.</p>
 
-        <p class="name">Ayesha,</p>
+          <p>Because now I want to.<br>
+          Slowly&hellip; properly&hellip;<br>
+          like reading a book<br>
+          I don&rsquo;t want to finish too fast.</p>
 
-        <p>you&rsquo;re not just someone I met online&mdash;<br>
-        you&rsquo;re a moment that turned into a feeling.</p>
-      </article>
+          <p>And the day I saw her in a saree&hellip;<br>
+          I swear,<br>
+          I paused for a second.</p>
+
+          <p>Not just because she looked beautiful&mdash;<br>
+          but because she felt different.</p>
+
+          <p>And that tiny mole on her shoulder,<br>
+          just near her collarbone&hellip;<br>
+          yeah,<br>
+          I noticed that too.</p>
+
+          <p>Like that Tamil line&mdash;<br>
+          &ldquo;நீ கட்டும் சேல மடிப்புல<br>
+          நா கசங்கி போனேன்டி&hellip;<br>
+          உன் எலுமிச்சம் பழ நிற இடுப்புல<br>
+          கெறங்கி போனேன்டி&hellip;&rdquo;</p>
+
+          <p>Because honestly,<br>
+          that&rsquo;s exactly what she did to me.</p>
+
+          <p class="name">Ayesha,</p>
+
+          <p>you weren&rsquo;t supposed to matter this much&hellip;<br>
+          but here I am,</p>
+
+          <p>wanting to know you more,<br>
+          a little more than I should,<br>
+          like I wish to read you slowly,<br>
+          feel you in little moments,<br>
+          and get lost in you&mdash;<br>
+          without ever wanting to find my way back.</p>
+        </article>
+        <img class="poem-photo" src="she.jpeg" alt="Ayesha">
+      </div>
     </section>
 
     <section class="closing" aria-label="Final line">
-      <p>For the girl whose little details became impossible to ignore.</p>
+      <p>You were supposed to be just a pause. Somehow, you became the part I keep returning to.</p>
     </section>
   </main>
 </body>
