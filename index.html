@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Ayesha</title>
+  <style>
+    :root {
+      --ink: #241b1f;
+      --petal: #f05d7b;
+      --rose: #b63654;
+      --leaf: #255f4a;
+      --gold: #d6a848;
+      --mist: #fff7fa;
+      --veil: rgba(255, 247, 250, 0.88);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        linear-gradient(135deg, rgba(37, 95, 74, 0.18), rgba(240, 93, 123, 0.14)),
+        #fff7fa;
+    }
+
+    .page {
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .opening {
+      position: relative;
+      min-height: 92vh;
+      display: grid;
+      align-items: center;
+      padding: clamp(28px, 6vw, 76px);
+      isolation: isolate;
+    }
+
+    .opening::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(255, 247, 250, 0.96) 0%, rgba(255, 247, 250, 0.84) 43%, rgba(255, 247, 250, 0.28) 72%),
+        url("https://images.unsplash.com/photo-1566576055886-92607b215181?auto=format&fit=crop&fm=jpg&q=80&w=2200") center right / cover;
+      transform: scale(1.01);
+    }
+
+    .opening::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 32%;
+      z-index: -1;
+      background: linear-gradient(0deg, #fff7fa 0%, rgba(255, 247, 250, 0));
+    }
+
+    .intro {
+      width: min(760px, 100%);
+      padding: clamp(6px, 1.6vw, 18px) 0;
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--rose);
+      font: 700 0.82rem/1.4 Arial, Helvetica, sans-serif;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--leaf);
+      font-size: 8.8rem;
+      line-height: 0.88;
+      font-weight: 500;
+    }
+
+    .lede {
+      width: min(570px, 100%);
+      margin: clamp(24px, 4vw, 42px) 0 0;
+      font-size: 1.6rem;
+      line-height: 1.6;
+    }
+
+    .mark {
+      display: inline-grid;
+      place-items: center;
+      width: 1.08em;
+      aspect-ratio: 1;
+      margin-left: 0.1em;
+      color: var(--mist);
+      background: var(--petal);
+      border-radius: 50%;
+      font-size: 0.58em;
+      vertical-align: 0.28em;
+    }
+
+    .poem-wrap {
+      position: relative;
+      padding: clamp(40px, 8vw, 90px) clamp(22px, 6vw, 76px) clamp(56px, 8vw, 104px);
+      background:
+        linear-gradient(180deg, #fff7fa 0%, #f8fbf7 100%);
+    }
+
+    .poem-wrap::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: clamp(22px, 7vw, 100px);
+      width: min(260px, 54vw);
+      height: 5px;
+      background: linear-gradient(90deg, var(--petal), var(--gold), var(--leaf));
+      border-radius: 4px;
+    }
+
+    .poem {
+      width: min(760px, 100%);
+      margin: 0 auto;
+      font-size: 1.32rem;
+      line-height: 1.86;
+    }
+
+    .poem p {
+      margin: 0 0 1.45em;
+    }
+
+    .poem p:last-child {
+      margin-bottom: 0;
+    }
+
+    .name {
+      color: var(--rose);
+      font-size: 2.15rem;
+      line-height: 1.3;
+    }
+
+    .closing {
+      padding: clamp(42px, 8vw, 92px) clamp(22px, 6vw, 76px);
+      color: #fffdf7;
+      background:
+        linear-gradient(135deg, rgba(37, 95, 74, 0.96), rgba(182, 54, 84, 0.9)),
+        url("https://images.unsplash.com/photo-1566576055886-92607b215181?auto=format&fit=crop&fm=jpg&q=80&w=1400") center / cover;
+    }
+
+    .closing p {
+      width: min(820px, 100%);
+      margin: 0 auto;
+      font-size: 2.35rem;
+      line-height: 1.55;
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    @media (max-width: 720px) {
+      .opening {
+        min-height: 88vh;
+        align-items: end;
+      }
+
+      .opening::before {
+        background:
+          linear-gradient(0deg, rgba(255, 247, 250, 0.98) 0%, rgba(255, 247, 250, 0.82) 52%, rgba(255, 247, 250, 0.2) 100%),
+          url("https://images.unsplash.com/photo-1566576055886-92607b215181?auto=format&fit=crop&fm=jpg&q=80&w=1400") 60% top / cover;
+      }
+
+      h1 {
+        font-size: 5rem;
+      }
+
+      .lede {
+        font-size: 1.12rem;
+      }
+
+      .poem {
+        font-size: 1.08rem;
+        line-height: 1.78;
+      }
+
+      .name {
+        font-size: 1.72rem;
+      }
+
+      .closing p {
+        font-size: 1.48rem;
+      }
+    }
+
+    @media (min-width: 721px) and (max-width: 1040px) {
+      h1 {
+        font-size: 6.8rem;
+      }
+
+      .lede {
+        font-size: 1.34rem;
+      }
+
+      .poem {
+        font-size: 1.2rem;
+      }
+
+      .closing p {
+        font-size: 1.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="opening" aria-label="A dedication for Ayesha">
+      <div class="intro">
+        <p class="eyebrow">Her name is</p>
+        <h1>Ayesha<span class="mark">&bull;</span></h1>
+        <p class="lede">Some people pass by like a post. Some stay like a feeling.</p>
+      </div>
+    </section>
+
+    <section class="poem-wrap" aria-label="Poem for Ayesha">
+      <article class="poem">
+        <p>I met her somewhere between<br>
+        a scroll and a pause,<br>
+        just another face on a screen&mdash;<br>
+        until she wasn&rsquo;t.</p>
+
+        <p>Brown hair falling soft like evening light,<br>
+        eyes that don&rsquo;t try, yet hold you still,<br>
+        and that tiny mole near her nose&hellip;<br>
+        like a secret the world almost missed.</p>
+
+        <p>She&rsquo;s eighteen,<br>
+        but there&rsquo;s something timeless in her smile,<br>
+        something calm, something quietly bright.</p>
+
+        <p>And her mehendi&mdash;<br>
+        not just patterns on her hands,<br>
+        but stories drawn in curves and lines,<br>
+        like art that speaks without a voice.</p>
+
+        <p>I don&rsquo;t know when it happened,<br>
+        or how something so simple felt so real,<br>
+        but somewhere between her laughter<br>
+        and those little details I couldn&rsquo;t ignore&hellip;</p>
+
+        <p>she stayed.</p>
+
+        <p class="name">Ayesha,</p>
+
+        <p>you&rsquo;re not just someone I met online&mdash;<br>
+        you&rsquo;re a moment that turned into a feeling.</p>
+      </article>
+    </section>
+
+    <section class="closing" aria-label="Final line">
+      <p>For the girl whose little details became impossible to ignore.</p>
+    </section>
+  </main>
+</body>
+</html>
