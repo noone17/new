@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400&display=swap');
+
+body {
+  font-family: 'Lato', sans-serif;
+  
+  /* --- CHANGED SECTION START --- */
+  /* This creates a multilayered background:
+     1. A semi-transparent gradient on top (pink to white).
+     2. A unique, softly blurred image of deep red roses underneath. */
+  background: 
+    linear-gradient(135deg, rgba(255, 230, 240, 0.85) 0%, rgba(255, 255, 255, 0.9) 100%), 
+    url('https://images.unsplash.com/photo-1518116120512-eb26e492215c?q=80&w=1600&auto=format&fit=crop') no-repeat center center fixed;
+  /* --- CHANGED SECTION END --- */
+
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  line-height: 1.6;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 77, 109, 0.2);
+  filter: blur(120px);
+  top: 10%;
+  left: 10%;
+  z-index: -1;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 182, 193, 0.2);
+  filter: blur(120px);
+  bottom: 10%;
+  right: 10%;
+  z-index: -1;
+}
+
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.opening {
+  margin-bottom: 3rem;
+  animation: fadeIn 1s ease-out;
+}
+
+.keep-reading {
+  text-align: center;
+  margin: 2rem 0;
+  animation: fadeIn 1.5s ease-out 0.5s both;
+}
+
+.keep-reading a {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 12px 24px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #ff4d6d, #ff758f);
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255,77,109,0.4);
+}
+
+.keep-reading a:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 25px rgba(255,77,109,0.6);
+}
+
+.intro p {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 0.5rem 0;
+}
+
+.intro h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #d63384;
+  margin: 1rem 0;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.name-glow {
+  color: #ff4d6d;
+  text-shadow: 
+    0 0 10px rgba(255,77,109,0.6),
+    0 0 20px rgba(255,77,109,0.4),
+    0 0 30px rgba(255,77,109,0.3);
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #d63384, 0 0 10px #d63384, 0 0 15px #d63384;
+  }
+  to {
+    text-shadow: 0 0 10px #ff6b9d, 0 0 20px #ff6b9d, 0 0 30px #ff6b9d;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.poem-wrap {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.3);
+  animation: fadeIn 1s ease-out 1s both;
+}
+
+.poem-layout {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.poem {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  text-align: center;
+  margin: 0;
+  color: #2c3e50;
+}
+
+.poem p {
+  margin: 1.5rem 0;
+  animation: fadeUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+.poem p:nth-child(1) { animation-delay: 0.2s; }
+.poem p:nth-child(2) { animation-delay: 0.4s; }
+.poem p:nth-child(3) { animation-delay: 0.6s; }
+.poem p:nth-child(4) { animation-delay: 0.8s; }
+.poem p:nth-child(5) { animation-delay: 1s; }
+.poem p:nth-child(6) { animation-delay: 1.2s; }
+.poem p:nth-child(7) { animation-delay: 1.4s; }
+
+.poem .name {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #d63384;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.closing {
+  margin-top: 3rem;
+  font-style: italic;
+  color: #666;
+  text-align: center;
+}
+
+.navigation {
+  margin-top: 3rem;
+  text-align: center;
+  animation: fadeIn 1s ease-out 0.5s both;
+}
+
+.navigation a {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 12px 24px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #ff4d6d, #ff758f);
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255,77,109,0.4);
+}
+
+.navigation a:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 25px rgba(255,77,109,0.6);
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 1rem;
+  }
+  .intro h1 {
+    font-size: 2.5rem;
+  }
+  .poem {
+    font-size: 1rem;
+  }
+}
