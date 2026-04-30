@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Saju</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="letter-page">
+    <section class="letter-section">
+      <div class="letter-full">
+        <article class="letter proposal">
+          <h1 class="name-glow">Saju</h1>
+
+          <p>
+            I've known you for a year now…<br>
+            and somehow, that still doesn't feel enough.
+          </p>
+
+          <p>
+            We've never met,<br>
+            but you've never felt like a stranger either.
+          </p>
+
+          <p>
+            I don't want to rush this,<br>
+            and I don't want to make it complicated.
+          </p>
+
+          <p>
+            I just know this—<br>
+            I want to meet you,<br>
+            walk with you by the beach one evening,<br>
+            hold your hand…<br>
+            and see where this goes.
+          </p>
+
+          <p>
+            Maybe watch a horror movie with you,<br>
+            and pretend I'm not scared…<br>
+            while secretly hoping you sit a little closer.
+          </p>
+
+          <p class="final-line">
+            So… Saju,<br>
+            will you go out with me?
+          </p>
+
+          <div class="buttons">
+            <button class="btn-yes" onclick="yesClicked()">Yes 💙</button>
+            <button class="btn-no" id="noBtn" onmouseover="moveNo()">No 🙈</button>
+          </div>
+
+        </article>
+      </div>
+    </section>
+
+    <div class="navigation">
+      <a href="index.html" class="button">← Back</a>
+    </div>
+  </main>
+
+  <script>
+    function yesClicked() {
+      const proposal = document.querySelector('.proposal');
+      proposal.innerHTML = `
+        <div class="love-message">
+          <h2>💙 Love u Saju 💙</h2>
+          <p>You just made me the happiest person!</p>
+          <p class="heart">❤️‍🔥</p>
+        </div>
+      `;
+    }
+
+    function moveNo() {
+      const btn = document.getElementById("noBtn");
+      btn.style.position = "absolute";
+      btn.style.top = Math.random() * 80 + "%";
+      btn.style.left = Math.random() * 80 + "%";
+    }
+  </script>
+
+</body>
+</html>

@@ -79,6 +79,22 @@ img {
   color: var(--muted);
 }
 
+.intro-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.button-secondary {
+  background: rgba(90, 159, 212, 0.3) !important;
+}
+
+.button-secondary:hover {
+  background: rgba(90, 159, 212, 0.5) !important;
+}
+
 .keep-reading {
   text-align: center;
   padding-bottom: clamp(2rem, 5vw, 4rem);
@@ -333,4 +349,97 @@ h1 {
 
 .navigation .button {
   background: rgba(42, 74, 109, 0.86);
+}
+
+/* Proposal page styles */
+.proposal {
+  text-align: center;
+}
+
+.proposal h1 {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  margin-bottom: 2rem;
+  color: var(--accent);
+}
+
+.proposal p {
+  margin: 1.5rem 0;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.proposal .final-line {
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  color: var(--ink);
+  margin-top: 2rem;
+  font-weight: 600;
+}
+
+.proposal .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+  position: relative;
+  min-height: 60px;
+}
+
+.proposal .btn-yes,
+.proposal .btn-no {
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+}
+
+.proposal .btn-yes {
+  background: linear-gradient(135deg, #3a7ab8, #5a9fd4);
+  color: white;
+  box-shadow: 0 4px 20px rgba(58, 122, 212, 0.4);
+}
+
+.proposal .btn-yes:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 30px rgba(58, 122, 212, 0.6);
+}
+
+.proposal .btn-no {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--muted);
+  border: 1px solid var(--line);
+}
+
+.proposal .btn-no:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Love message after Yes */
+.love-message {
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+.love-message h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.love-message p {
+  font-size: 1.3rem;
+  color: var(--muted);
+}
+
+.love-message .heart {
+  font-size: 3rem;
+  margin-top: 1rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
 }
