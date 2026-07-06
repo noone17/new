@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To Luna</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --blush:    #f9e8e8;
+      --rose:     #e8b4b8;
+      --petal:    #f2c4ce;
+      --sage:     #c8d8c0;
+      --cream:    #fdf6f0;
+      --text:     #5a3e3e;
+      --muted:    #9e7070;
+    }
+
+    /* ── Landing screen ── */
+    #landing {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      background:
+        radial-gradient(ellipse at 20% 25%, rgba(242,196,206,0.35) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 70%, rgba(200,216,192,0.28) 0%, transparent 55%),
+        #fdf6f0;
+      transition: opacity 0.9s ease, visibility 0.9s ease;
+    }
+
+    #landing.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .landing-flower {
+      font-size: 2.6rem;
+      animation: sway 3s ease-in-out infinite;
+      line-height: 1;
+    }
+
+    @keyframes sway {
+      0%, 100% { transform: rotate(-6deg) scale(1);   }
+      50%       { transform: rotate( 6deg) scale(1.08); }
+    }
+
+    .landing-sub {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-size: 0.78rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .landing-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--rose);
+      line-height: 1;
+    }
+
+    .landing-hint {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      color: var(--muted);
+    }
+
+    /* Read This button */
+    #readBtn {
+      margin-top: 8px;
+      padding: 14px 44px;
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+      background: rgba(255,255,255,0.75);
+      border: 1.5px solid var(--rose);
+      border-radius: 50px;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: background 0.25s, color 0.25s, transform 0.18s, box-shadow 0.25s;
+      box-shadow: 0 4px 18px rgba(232,180,184,0.18);
+    }
+
+    #readBtn:hover {
+      background: var(--rose);
+      color: white;
+      transform: scale(1.05);
+      box-shadow: 0 6px 24px rgba(232,180,184,0.38);
+    }
+
+    #readBtn:active {
+      transform: scale(0.98);
+    }
+
+    /* pulse ring around button */
+    .btn-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50px;
+      border: 1px solid rgba(232,180,184,0.4);
+      animation: pulse-ring 2.4s ease-out infinite;
+    }
+
+    @keyframes pulse-ring {
+      0%   { transform: scale(1);   opacity: 0.7; }
+      100% { transform: scale(1.18); opacity: 0; }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--cream);
+      font-family: 'Lato', sans-serif;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── Floating petals ── */
+    .petals-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .petal {
+      position: absolute;
+      top: -60px;
+      width: 18px;
+      height: 22px;
+      border-radius: 50% 0 50% 0;
+      opacity: 0;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0%   { transform: translateY(0)   rotate(0deg)   scale(1);   opacity: 0; }
+      10%  { opacity: 0.7; }
+      90%  { opacity: 0.5; }
+      100% { transform: translateY(110vh) rotate(360deg) scale(0.6); opacity: 0; }
+    }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 60px 20px 40px;
+      text-align: center;
+    }
+
+    /* decorative SVG flowers top */
+    .flowers-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      pointer-events: none;
+    }
+
+    .flowers-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      pointer-events: none;
+      transform: scaleY(-1);
+    }
+
+    /* ── Card ── */
+    .card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(232, 180, 184, 0.4);
+      border-radius: 28px;
+      max-width: 680px;
+      width: 100%;
+      padding: 56px 52px;
+      box-shadow:
+        0 8px 32px rgba(180, 100, 110, 0.10),
+        0 2px 8px  rgba(180, 100, 110, 0.06);
+    }
+
+    @media (max-width: 600px) {
+      .card { padding: 40px 28px; }
+    }
+
+    /* corner flowers on card */
+    .card::before,
+    .card::after {
+      content: '';
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.55;
+    }
+    .card::before {
+      top: -18px; left: -18px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cellipse cx='50' cy='30' rx='12' ry='22' fill='%23f2c4ce' transform='rotate(0 50 50)'/%3E%3Cellipse cx='50' cy='30' rx='12' ry='22' fill='%23e8b4b8' transform='rotate(45 50 50)'/%3E%3Cellipse cx='50' cy='30' rx='12' ry='22' fill='%23f2c4ce' transform='rotate(90 50 50)'/%3E%3Cellipse cx='50' cy='30' rx='12' ry='22' fill='%23e8b4b8' transform='rotate(135 50 50)'/%3E%3Cellipse cx='50' cy='30' rx='12' ry='22' fill='%23f2c4ce' transform='rotate(180 50 50)'/%3E%3Cellipse cx='50' cy='30' rx='12' ry='22' fill='%23e8b4b8' transform='rotate(225 50 50)'/%3E%3Cellipse cx='50' cy='30' rx='12' ry='22' fill='%23f2c4ce' transform='rotate(270 50 50)'/%3E%3Cellipse cx='50' cy='30' rx='12' ry='22' fill='%23e8b4b8' transform='rotate(315 50 50)'/%3E%3Ccircle cx='50' cy='50' r='10' fill='%23f9e8e8'/%3E%3C/svg%3E");
+    }
+    .card::after {
+      bottom: -18px; right: -18px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cellipse cx='50' cy='30' rx='12' ry='22' fill='%23c8d8c0' transform='rotate(0 50 50)'/%3E%3Cellipse cx='50' cy='30' rx='12' ry='22' fill='%23b8ccb0' transform='rotate(60 50 50)'/%3E%3Cellipse cx='50' cy='30' rx='12' ry='22' fill='%23c8d8c0' transform='rotate(120 50 50)'/%3E%3Cellipse cx='50' cy='30' rx='12' ry='22' fill='%23b8ccb0' transform='rotate(180 50 50)'/%3E%3Cellipse cx='50' cy='30' rx='12' ry='22' fill='%23c8d8c0' transform='rotate(240 50 50)'/%3E%3Cellipse cx='50' cy='30' rx='12' ry='22' fill='%23b8ccb0' transform='rotate(300 50 50)'/%3E%3Ccircle cx='50' cy='50' r='10' fill='%23fdf6f0'/%3E%3C/svg%3E");
+    }
+
+    /* ── Typography ── */
+    .to-label {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.6rem, 6vw, 4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--rose);
+      line-height: 1.1;
+      margin-bottom: 32px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--petal), transparent);
+    }
+    .divider-icon {
+      font-size: 1.1rem;
+      color: var(--rose);
+    }
+
+    .poem {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.05rem, 2.2vw, 1.22rem);
+      font-weight: 300;
+      line-height: 2;
+      color: var(--text);
+      text-align: left;
+    }
+
+    .poem p {
+      margin-bottom: 1.4em;
+    }
+
+    .poem p:last-child {
+      margin-bottom: 0;
+    }
+
+    .poem .highlight {
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .poem .closing {
+      font-style: italic;
+      font-size: 1.05em;
+      color: var(--rose);
+      margin-top: 2em;
+      text-align: center;
+    }
+
+    /* ── Signature ── */
+    .signature {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .signature-line {
+      width: 60px;
+      height: 1px;
+      background: var(--petal);
+    }
+
+    .signature-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Audio Player ── */
+    .player-wrap {
+      margin-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .player-label {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-size: 0.72rem;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(249, 232, 232, 0.55);
+      border: 1px solid rgba(232, 180, 184, 0.35);
+      border-radius: 50px;
+      padding: 10px 20px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    /* Play / Pause button */
+    #playBtn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1.5px solid var(--rose);
+      background: white;
+      color: var(--rose);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+    #playBtn:hover {
+      background: var(--rose);
+      color: white;
+      transform: scale(1.08);
+    }
+    #playBtn svg {
+      width: 14px;
+      height: 14px;
+      pointer-events: none;
+    }
+
+    /* Progress bar */
+    .progress-area {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 160px;
+    }
+
+    #progressBar {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 3px;
+      border-radius: 3px;
+      background: linear-gradient(to right, var(--rose) 0%, var(--petal) 0%);
+      outline: none;
+      cursor: pointer;
+    }
+    #progressBar::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--rose);
+      cursor: pointer;
+      box-shadow: 0 0 0 2px white, 0 0 0 3px var(--rose);
+    }
+    #progressBar::-moz-range-thumb {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--rose);
+      border: none;
+      cursor: pointer;
+    }
+
+    .time-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 300;
+      color: var(--muted);
+    }
+
+    /* Volume */
+    #volumeBtn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      padding: 0;
+      transition: color 0.2s;
+    }
+    #volumeBtn:hover { color: var(--rose); }
+    #volumeBtn svg { width: 16px; height: 16px; pointer-events: none; }
+
+    /* Vinyl spin animation when playing */
+    .vinyl {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: conic-gradient(
+        #e8b4b8 0deg, #f2c4ce 60deg, #c8d8c0 120deg,
+        #e8b4b8 180deg, #f9e8e8 240deg, #f2c4ce 300deg, #e8b4b8 360deg
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .vinyl::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: white;
+    }
+    .vinyl.spinning {
+      animation: spin 4s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ── Background gradient ── */
+    body {
+      background:
+        radial-gradient(ellipse at 15% 20%, rgba(242,196,206,0.25) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 75%, rgba(200,216,192,0.20) 0%, transparent 55%),
+        var(--cream);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Landing screen -->
+  <div id="landing">
+    <div class="landing-flower">✿</div>
+    <p class="landing-sub">A message just for you</p>
+    <h1 class="landing-name">Luna</h1>
+    <p class="landing-hint">What I felt, now written in words</p>
+    <div class="btn-wrap">
+      <button id="readBtn">Read This</button>
+    </div>
+  </div>
+
+  <!-- Floating petals -->
+  <div class="petals-canvas" id="petals"></div>
+
+  <!-- Background SVG flowers -->
+  <svg class="flowers-top" viewBox="0 0 1440 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <g opacity="0.18">
+      <!-- left cluster -->
+      <ellipse cx="60"  cy="60"  rx="28" ry="50" fill="#e8b4b8" transform="rotate(-20 60 60)"/>
+      <ellipse cx="60"  cy="60"  rx="28" ry="50" fill="#f2c4ce" transform="rotate(25 60 60)"/>
+      <ellipse cx="60"  cy="60"  rx="28" ry="50" fill="#e8b4b8" transform="rotate(70 60 60)"/>
+      <circle  cx="60"  cy="60"  r="16"           fill="#fdf6f0"/>
+      <ellipse cx="130" cy="30"  rx="18" ry="34" fill="#c8d8c0" transform="rotate(10 130 30)"/>
+      <ellipse cx="130" cy="30"  rx="18" ry="34" fill="#b8ccb0" transform="rotate(70 130 30)"/>
+      <circle  cx="130" cy="30"  r="10"           fill="#fdf6f0"/>
+      <!-- right cluster -->
+      <ellipse cx="1380" cy="55" rx="28" ry="50" fill="#f2c4ce" transform="rotate(15 1380 55)"/>
+      <ellipse cx="1380" cy="55" rx="28" ry="50" fill="#e8b4b8" transform="rotate(60 1380 55)"/>
+      <ellipse cx="1380" cy="55" rx="28" ry="50" fill="#f2c4ce" transform="rotate(105 1380 55)"/>
+      <circle  cx="1380" cy="55" r="16"           fill="#fdf6f0"/>
+      <ellipse cx="1310" cy="25" rx="18" ry="34" fill="#c8d8c0" transform="rotate(-10 1310 25)"/>
+      <ellipse cx="1310" cy="25" rx="18" ry="34" fill="#b8ccb0" transform="rotate(50 1310 25)"/>
+      <circle  cx="1310" cy="25" r="10"           fill="#fdf6f0"/>
+      <!-- center small -->
+      <ellipse cx="720" cy="18" rx="14" ry="26" fill="#f2c4ce" transform="rotate(0 720 18)"/>
+      <ellipse cx="720" cy="18" rx="14" ry="26" fill="#e8b4b8" transform="rotate(60 720 18)"/>
+      <ellipse cx="720" cy="18" rx="14" ry="26" fill="#f2c4ce" transform="rotate(120 720 18)"/>
+      <circle  cx="720" cy="18" r="8"            fill="#fdf6f0"/>
+    </g>
+  </svg>
+
+  <svg class="flowers-bottom" viewBox="0 0 1440 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <g opacity="0.18">
+      <ellipse cx="80"   cy="60" rx="28" ry="50" fill="#e8b4b8" transform="rotate(-20 80 60)"/>
+      <ellipse cx="80"   cy="60" rx="28" ry="50" fill="#f2c4ce" transform="rotate(25 80 60)"/>
+      <ellipse cx="80"   cy="60" rx="28" ry="50" fill="#e8b4b8" transform="rotate(70 80 60)"/>
+      <circle  cx="80"   cy="60" r="16"           fill="#fdf6f0"/>
+      <ellipse cx="1360" cy="55" rx="28" ry="50" fill="#c8d8c0" transform="rotate(15 1360 55)"/>
+      <ellipse cx="1360" cy="55" rx="28" ry="50" fill="#b8ccb0" transform="rotate(75 1360 55)"/>
+      <ellipse cx="1360" cy="55" rx="28" ry="50" fill="#c8d8c0" transform="rotate(135 1360 55)"/>
+      <circle  cx="1360" cy="55" r="16"           fill="#fdf6f0"/>
+      <ellipse cx="720"  cy="20" rx="14" ry="26" fill="#f2c4ce" transform="rotate(0 720 20)"/>
+      <ellipse cx="720"  cy="20" rx="14" ry="26" fill="#e8b4b8" transform="rotate(60 720 20)"/>
+      <ellipse cx="720"  cy="20" rx="14" ry="26" fill="#f2c4ce" transform="rotate(120 720 20)"/>
+      <circle  cx="720"  cy="20" r="8"            fill="#fdf6f0"/>
+    </g>
+  </svg>
+
+  <!-- Main content -->
+  <main class="hero">
+    <div class="card">
+      <p class="to-label">A poem for you</p>
+      <h1 class="name">Luna</h1>
+
+      <div class="divider">
+        <div class="divider-line"></div>
+        <span class="divider-icon">✿</span>
+        <div class="divider-line"></div>
+      </div>
+
+      <!-- Audio Player -->
+      <div class="player-wrap">
+        <span class="player-label">♪ A little song for you</span>
+        <div class="player-controls">
+          <!-- Vinyl disc -->
+          <div class="vinyl" id="vinyl"></div>
+
+          <!-- Play / Pause -->
+          <button id="playBtn" aria-label="Play">
+            <svg id="iconPlay" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <svg id="iconPause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+
+          <!-- Progress + time -->
+          <div class="progress-area">
+            <input type="range" id="progressBar" min="0" max="100" value="0" step="0.1" aria-label="Seek" />
+            <div class="time-row">
+              <span id="timeCurrent">0:00</span>
+              <span id="timeDuration">0:00</span>
+            </div>
+          </div>
+
+          <!-- Volume toggle -->
+          <button id="volumeBtn" aria-label="Mute">
+            <svg id="iconVol" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+            <svg id="iconMute" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M16.5 12A4.5 4.5 0 0 0 14 7.97v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06A8.99 8.99 0 0 0 17.73 18l1.73 1.73L21 18.46 4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <audio id="audio" preload="metadata">
+        <source src="jazz.mp3" type="audio/mpeg" />
+      </audio>
+
+      <div class="poem">
+        <p>They say the moon borrows its light,<br/>But yours feels like it was born to shine.</p>
+
+        <p>Maybe that is why they call you <span class="highlight">Luna</span>—<br/>Because even a quiet glance from you<br/>Can make an ordinary day feel brighter.</p>
+
+        <p>I do not know your favorite song,<br/>Or the stories you have never told.</p>
+
+        <p>I only know that when I saw you,<br/>Something about your smile<br/>Made me stop scrolling.</p>
+
+        <p>Your eyes carry a calm I cannot explain,<br/>As if they hold a thousand gentle thoughts.</p>
+
+        <p>Your glasses do not hide their beauty—<br/>They frame them,<br/>Like a perfect poem in a simple border.</p>
+
+        <p>Your cheeks wear kindness so naturally,<br/>And your smile feels effortless,<br/>The kind that lingers in someone's mind<br/>Long after the screen goes dark.</p>
+
+        <p>Maybe this is just the beginning,<br/>A hello between two strangers.</p>
+
+        <p>Maybe it is nothing more than a passing moment.<br/>But I would rather be honest than silent.</p>
+
+        <p>Since the day I found you,<br/>I have caught myself smiling for no reason,<br/>Thinking about someone<br/>I barely know,<br/>Yet somehow wish to know deeply.</p>
+
+        <p>It may sound unexpected,<br/>And perhaps even a little crazy,<br/>But feelings do not always wait for permission.</p>
+
+        <p>So here is my heart,<br/>Simple, honest, and without pretense:</p>
+
+        <p><span class="highlight">Luna, I think I have fallen for you.</span></p>
+
+        <p>I do not know where this journey will lead,<br/>But I know I would love the chance<br/>To walk the first few steps with you.</p>
+
+        <p>If love begins with admiration,<br/>Grows through respect,<br/>And blossoms through knowing someone,<br/>Then I am ready for every chapter.</p>
+
+        <p>Hasin Samina,<br/>You are more than a beautiful face to me.</p>
+
+        <p>You are the reason I paused,<br/>The reason I hoped,<br/>And the reason I am brave enough to say this—</p>
+
+        <p><span class="highlight">I love you.</span><br/>Not because I know everything about you,<br/>But because my heart believes<br/>You are someone truly worth knowing,<br/>Cherishing, and loving.</p>
+
+        <p>Whether you feel the same or not,<br/>Thank you for being the reason<br/>My heart learned to write poems again.</p>
+
+        <p class="closing">With all my heart,<br/><span style="color:var(--rose);">Yours truly</span></p>
+      </div>
+
+      <div class="signature">
+        <div class="signature-line"></div>
+        <span class="signature-text">அன்புடன் ✿</span>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // Generate floating petals
+    const canvas = document.getElementById('petals');
+    const colors = ['#f2c4ce', '#e8b4b8', '#f9e8e8', '#c8d8c0', '#d4e8cc', '#fce4ec'];
+
+    function createPetal() {
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+
+      const size = 10 + Math.random() * 16;
+      const left = Math.random() * 100;
+      const duration = 8 + Math.random() * 14;
+      const delay = Math.random() * 20;
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const rotate = Math.random() > 0.5 ? '50% 0 50% 0' : '0 50% 0 50%';
+
+      petal.style.cssText = `
+        width: ${size}px;
+        height: ${size * 1.3}px;
+        left: ${left}%;
+        background: ${color};
+        border-radius: ${rotate};
+        animation-duration: ${duration}s;
+        animation-delay: ${delay}s;
+        animation-name: fall;
+      `;
+
+      canvas.appendChild(petal);
+
+      // Remove after animation ends to avoid DOM bloat
+      setTimeout(() => petal.remove(), (duration + delay) * 1000);
+    }
+
+    // Initial burst
+    for (let i = 0; i < 28; i++) createPetal();
+
+    // Keep spawning
+    setInterval(() => createPetal(), 900);
+
+    // ── Read This button ──────────────────────────────────────────
+    const landing = document.getElementById('landing');
+    const readBtn = document.getElementById('readBtn');
+
+    // ── Audio Player refs ─────────────────────────────────────────
+    const audio       = document.getElementById('audio');
+    const playBtn     = document.getElementById('playBtn');
+    const iconPlay    = document.getElementById('iconPlay');
+    const iconPause   = document.getElementById('iconPause');
+    const progressBar = document.getElementById('progressBar');
+    const timeCurrent = document.getElementById('timeCurrent');
+    const timeDuration= document.getElementById('timeDuration');
+    const volumeBtn   = document.getElementById('volumeBtn');
+    const iconVol     = document.getElementById('iconVol');
+    const iconMute    = document.getElementById('iconMute');
+    const vinyl       = document.getElementById('vinyl');
+
+    readBtn.addEventListener('click', () => {
+      // Dismiss landing with fade
+      landing.classList.add('hidden');
+
+      // Scroll letter into view smoothly
+      document.querySelector('.hero').scrollIntoView({ behavior: 'smooth' });
+
+      // Play music (browsers allow autoplay after a user gesture)
+      audio.play().catch(() => {});
+    });
+
+    function fmt(s) {
+      const m = Math.floor(s / 60);
+      const sec = Math.floor(s % 60).toString().padStart(2, '0');
+      return `${m}:${sec}`;
+    }
+
+    // Play / Pause
+    playBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    });
+
+    audio.addEventListener('play', () => {
+      iconPlay.style.display  = 'none';
+      iconPause.style.display = '';
+      vinyl.classList.add('spinning');
+    });
+
+    audio.addEventListener('pause', () => {
+      iconPlay.style.display  = '';
+      iconPause.style.display = 'none';
+      vinyl.classList.remove('spinning');
+    });
+
+    // Duration
+    audio.addEventListener('loadedmetadata', () => {
+      timeDuration.textContent = fmt(audio.duration);
+    });
+
+    // Progress update
+    audio.addEventListener('timeupdate', () => {
+      if (!audio.duration) return;
+      const pct = (audio.currentTime / audio.duration) * 100;
+      progressBar.value = pct;
+      // gradient fill
+      progressBar.style.background =
+        `linear-gradient(to right, var(--rose) ${pct}%, rgba(232,180,184,0.25) ${pct}%)`;
+      timeCurrent.textContent = fmt(audio.currentTime);
+    });
+
+    // Seek
+    progressBar.addEventListener('input', () => {
+      if (!audio.duration) return;
+      audio.currentTime = (progressBar.value / 100) * audio.duration;
+    });
+
+    // Mute toggle
+    volumeBtn.addEventListener('click', () => {
+      audio.muted = !audio.muted;
+      iconVol.style.display  = audio.muted ? 'none' : '';
+      iconMute.style.display = audio.muted ? '' : 'none';
+    });
+
+    // Loop
+    audio.addEventListener('ended', () => {
+      audio.currentTime = 0;
+      audio.play();
+    });
+  </script>
+</body>
+</html>
