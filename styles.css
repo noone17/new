@@ -1,367 +1,53 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600&family=DM+Mono:wght@400;500&family=Parisienne&display=swap');
 
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: 'Georgia', 'Garamond', serif;
-    background: #0a0e27;
-    color: #e8e8e8;
-    overflow-x: hidden;
-}
-
-/* Starfield Background */
-.stars-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-.star {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: white;
-    border-radius: 50%;
-    animation: twinkle 3s infinite;
-}
-
-@keyframes twinkle {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 1; }
-}
-
-.moon {
-    position: fixed;
-    top: 80px;
-    right: 80px;
-    width: 120px;
-    height: 120px;
-    background: radial-gradient(circle at 35% 35%, #f4f1de, #e8dcc4);
-    border-radius: 50%;
-    box-shadow: 0 0 30px rgba(244, 241, 222, 0.3);
-    z-index: 0;
-    pointer-events: none;
-}
-
-/* Page Styles */
-.page {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
-    position: relative;
-    z-index: 1;
-}
-
-.page-content {
-    max-width: 800px;
-    width: 100%;
-}
-
-/* Page 1 Styles */
-.page-1 {
-    background: linear-gradient(180deg, rgba(10, 14, 39, 0.95) 0%, rgba(20, 25, 50, 0.95) 100%);
-}
-
-.intro-section {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.intro-section h1 {
-    font-size: 3em;
-    font-weight: 300;
-    letter-spacing: 3px;
-    margin-bottom: 40px;
-    color: #f4f1de;
-}
-
-.narrative {
-    margin-bottom: 40px;
-    line-height: 1.8;
-}
-
-.narrative p {
-    font-size: 1.3em;
-    color: #d4d0c8;
-    margin-bottom: 15px;
-    font-weight: 300;
-}
-
-.name-reveal {
-    font-size: 2.5em;
-    font-weight: 500;
-    color: #f4f1de;
-    margin: 30px 0;
-    letter-spacing: 2px;
-}
-
-.small-text {
-    font-size: 0.95em;
-    color: #a9a5a0;
-    line-height: 1.8;
-}
-
-.small-text em {
-    font-style: italic;
-    display: block;
-    margin-bottom: 8px;
-}
-
-/* Chat Section */
-.chat-section {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin: 80px 0;
-    padding: 0 20px;
-}
-
-.chat-bubble {
-    padding: 15px 20px;
-    border-radius: 15px;
-    font-size: 1.05em;
-    max-width: 70%;
-    line-height: 1.6;
-}
-
-.chat-bubble.me {
-    align-self: flex-end;
-    background: rgba(102, 126, 234, 0.3);
-    border: 1px solid rgba(102, 126, 234, 0.5);
-    color: #e8e8e8;
-}
-
-.chat-bubble.you {
-    align-self: flex-start;
-    background: rgba(118, 75, 162, 0.3);
-    border: 1px solid rgba(118, 75, 162, 0.5);
-    color: #e8e8e8;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.emoji {
-    font-size: 1.3em;
-}
-
-.reflection {
-    text-align: center;
-    margin: 40px 0;
-    font-size: 1.15em;
-    color: #d4d0c8;
-    font-style: italic;
-}
-
-.scroll-indicator {
-    text-align: center;
-    margin-top: 100px;
-    font-size: 1.2em;
-    color: #a9a5a0;
-    animation: bob 2s infinite;
-}
-
-@keyframes bob {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-/* Page 2 Styles */
-.page-2 {
-    background: linear-gradient(180deg, rgba(10, 14, 39, 0.98) 0%, rgba(15, 20, 40, 0.98) 100%);
-    padding-top: 80px;
-    padding-bottom: 100px;
-}
-
-.poem-title {
-    text-align: center;
-    font-size: 2.8em;
-    font-weight: 400;
-    letter-spacing: 2px;
-    margin-bottom: 80px;
-    color: #f4f1de;
-}
-
-.poem-container {
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-.verse {
-    margin-bottom: 40px;
-    line-height: 1.9;
-    font-size: 1.1em;
-    color: #d4d0c8;
-}
-
-.verse strong {
-    color: #f4f1de;
-    font-weight: 600;
-}
-
-.spacer {
-    height: 150px;
-}
-
-.closing {
-    text-align: center;
-    margin: 80px 0 40px 0;
-}
-
-.name-closing {
-    font-size: 2em;
-    color: #f4f1de;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-    font-weight: 400;
-}
-
-.closing-message {
-    font-size: 1.1em;
-    color: #a9a5a0;
-    font-style: italic;
-}
-
-.attribution {
-    text-align: center;
-    margin-top: 60px;
-    padding-top: 40px;
-    border-top: 1px solid rgba(244, 241, 222, 0.2);
-    color: #a9a5a0;
-    font-size: 1.05em;
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
-    opacity: 0;
-}
-
-@keyframes fadeInVerse {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.fade-in-verse {
-    animation: fadeInVerse 0.6s ease-out forwards;
-    opacity: 0;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .moon {
-        width: 80px;
-        height: 80px;
-        top: 40px;
-        right: 40px;
-    }
-
-    .intro-section h1 {
-        font-size: 2em;
-        letter-spacing: 2px;
-    }
-
-    .narrative p {
-        font-size: 1.1em;
-    }
-
-    .name-reveal {
-        font-size: 1.8em;
-    }
-
-    .chat-bubble {
-        max-width: 85%;
-        font-size: 0.95em;
-    }
-
-    .poem-title {
-        font-size: 2em;
-    }
-
-    .verse {
-        font-size: 1em;
-    }
-}
-
-@media (max-width: 480px) {
-    .page {
-        padding: 30px 15px;
-    }
-
-    .moon {
-        width: 60px;
-        height: 60px;
-        top: 20px;
-        right: 20px;
-    }
-
-    .intro-section h1 {
-        font-size: 1.6em;
-        margin-bottom: 30px;
-    }
-
-    .narrative p {
-        font-size: 0.95em;
-    }
-
-    .name-reveal {
-        font-size: 1.5em;
-    }
-
-    .chat-section {
-        margin: 40px 0;
-    }
-
-    .chat-bubble {
-        max-width: 90%;
-        font-size: 0.9em;
-        padding: 12px 15px;
-    }
-
-    .poem-title {
-        font-size: 1.5em;
-        margin-bottom: 50px;
-    }
-
-    .verse {
-        font-size: 0.9em;
-        margin-bottom: 30px;
-    }
-
-    .spacer {
-        height: 80px;
-    }
-
-    .name-closing {
-        font-size: 1.5em;
-    }
-}
+:root { --night: #080506; --ink: #f8e9e7; --muted: #c59a9a; --red: #c52d3f; --crimson: #8f1728; --wine: #3b0b16; }
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body { background: var(--night); color: var(--ink); font-family: 'Cormorant Garamond', Georgia, serif; overflow: hidden; }
+button { font: inherit; }
+.stars-container, .heart-field { inset: 0; overflow: hidden; pointer-events: none; position: fixed; z-index: 0; }
+.star { animation: twinkle 4s ease-in-out infinite; background: #e94b5c; border-radius: 50%; box-shadow: 0 0 6px rgba(229, 75, 92, .75); height: 2px; opacity: .45; position: absolute; width: 2px; }
+.ambient-glow { background: radial-gradient(ellipse, rgba(154, 18, 40, .3), transparent 68%); height: 80vh; left: 50%; pointer-events: none; position: fixed; top: -28vh; transform: translateX(-50%); width: 95vw; z-index: 0; }
+.book { height: 100svh; overflow: hidden; position: relative; width: 100%; z-index: 1; }
+.page { align-items: center; display: flex; inset: 0; justify-content: center; min-height: 100svh; overflow-y: auto; padding: 42px 24px; position: absolute; transition: transform 1.15s cubic-bezier(.77, 0, .18, 1), opacity .8s ease; }
+.page-1 { background: radial-gradient(circle at 50% 36%, rgba(111, 13, 30, .42), transparent 42%), linear-gradient(145deg, rgba(8, 5, 6, .96), rgba(35, 7, 14, .98)); flex-direction: column; justify-content: space-between; text-align: center; transform-origin: left center; z-index: 3; }
+.page-2 { align-items: flex-start; background: radial-gradient(circle at 20% 20%, rgba(132, 19, 39, .2), transparent 32%), #100708; opacity: 0; padding-top: clamp(42px, 8vh, 88px); transform: translateX(100%); z-index: 2; }
+.book::after { background: radial-gradient(circle, rgba(205, 37, 57, .42), transparent 65%); content: ''; inset: -30%; opacity: 0; pointer-events: none; position: absolute; transform: scale(.25); z-index: 4; }
+.book.is-open::after { animation: redBloom 1.3s ease-out forwards; }
+.book.is-open .page-1 { opacity: 0; pointer-events: none; transform: perspective(1400px) rotateY(-96deg); }
+.book.is-open .page-2 { opacity: 1; transform: translateX(0); }
+.cover-mark, .poem-kicker, .tap-note, .for-you { color: var(--muted); font-family: 'DM Mono', monospace; font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; }
+.cover-mark { animation: appear 1.4s both; }
+.cover-copy { margin-top: -2vh; }
+.eyebrow { color: var(--red); font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .24em; text-transform: uppercase; }
+.cover-copy h1 { font-size: clamp(4.5rem, 13vw, 9rem); font-weight: 400; line-height: .72; margin: 1.5rem 0 2.2rem; }
+.cover-copy h1 span { color: var(--red); font-family: Parisienne, cursive; font-size: 1.12em; }
+.name { color: var(--ink); font-size: 1.45rem; letter-spacing: .12em; margin: 0; text-transform: uppercase; }
+.name span { color: var(--red); font-size: 1.5rem; }
+.cover-quote { color: var(--muted); font-size: 1.3rem; font-style: italic; line-height: 1.45; margin-top: 3rem; }
+.open-button { background: rgba(197, 45, 63, .1); border: 1px solid rgba(218, 63, 81, .7); color: var(--ink); cursor: pointer; font-family: 'DM Mono', monospace; font-size: .72rem; letter-spacing: .16em; padding: 1rem 1.5rem; text-transform: uppercase; transition: background .3s, box-shadow .3s, transform .3s; }
+.open-button:hover, .open-button:focus-visible { background: rgba(197, 45, 63, .23); box-shadow: 0 0 28px rgba(197, 45, 63, .3); transform: translateY(-3px); }
+.button-heart { color: var(--red); margin-left: .8rem; }
+.tap-note { margin: -1rem 0 0; }
+.tap-note span { display: inline-block; font-size: 1rem; margin-left: .4rem; }
+.poem-wrap { margin: 0 auto; max-width: 600px; text-align: center; width: 100%; }
+.poem-kicker { color: var(--red); margin: 0 0 1rem; }
+.poem-kicker span { color: var(--red); font-size: 1rem; }
+.poem-wrap h2 { color: var(--ink); font-family: Parisienne, cursive; font-size: clamp(2.8rem, 8vw, 4.9rem); font-weight: 400; line-height: .95; margin: 0 0 3rem; }
+.poem { color: #f0d9d6; font-family: Caveat, cursive; font-size: clamp(1.7rem, 3.5vw, 2.25rem); line-height: 1.22; }
+.poem p { margin: .1rem 0; opacity: 0; transform: translateY(12px); }
+.book.is-open .poem p { animation: lineIn .7s ease forwards; }
+.poem p:nth-of-type(6), .poem p:nth-of-type(11), .poem p:nth-of-type(16), .poem p:nth-of-type(21) { margin-top: 1.5rem; }
+.poem .closing-lines { color: #ed6974; font-weight: 600; }
+.poem-end { color: var(--red); font-size: 1.45rem; margin: 2.2rem 0 1.5rem; }
+.signature { color: var(--red); font-family: Parisienne, cursive; font-size: 2rem; margin: 0; }
+.for-you { font-size: .55rem; margin-top: .6rem; }
+.music-toggle { background: rgba(197, 45, 63, .1); border: 1px solid rgba(218, 63, 81, .5); border-radius: 50%; bottom: 24px; color: var(--red); cursor: pointer; height: 38px; position: fixed; right: 24px; width: 38px; }
+@keyframes twinkle { 0%, 100% { opacity: .2; transform: scale(.8); } 50% { opacity: .9; transform: scale(1.4); } }
+@keyframes appear { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes lineIn { to { opacity: 1; transform: translateY(0); } }
+@keyframes floatHeart { 0% { opacity: 0; transform: translateY(20px) scale(.6) rotate(-10deg); } 25% { opacity: .9; } 100% { opacity: 0; transform: translateY(-160px) scale(1.1) rotate(18deg); } }
+@keyframes redBloom { 0% { opacity: 0; transform: scale(.25); } 30% { opacity: 1; } 100% { opacity: 0; transform: scale(1); } }
+.floating-heart { animation: floatHeart 2.4s ease-out forwards; color: var(--red); font-size: 1.2rem; position: fixed; z-index: 5; }
+@media (max-width: 560px) { .page { padding: 32px 20px; } .cover-copy h1 { font-size: clamp(4rem, 18vw, 6rem); } .cover-quote { font-size: 1.15rem; margin-top: 2.2rem; } .poem-wrap h2 { margin-bottom: 2rem; } .poem { font-size: 1.55rem; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }

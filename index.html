@@ -3,102 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Somehow, It Was You</title>
+    <title>For My Baby Girl, Nikita</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600&family=DM+Mono:wght@400;500&family=Parisienne&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Background elements -->
     <div class="stars-container"></div>
-    <div class="moon"></div>
+    <div class="ambient-glow"></div>
+    <div class="heart-field" aria-hidden="true"></div>
 
-    <!-- Page 1: How It Started -->
-    <section class="page page-1">
-        <div class="page-content">
-            <div class="intro-section">
-                <h1 class="fade-in">HOW IT STARTED</h1>
-                
-                <div class="narrative fade-in" style="animation-delay: 0.5s">
-                    <p>I wasn't looking for anyone.</p>
-                    <p>I was just scrolling through Instagram...</p>
-                    <p>And then I saw you.</p>
+    <main class="book" aria-live="polite">
+        <section class="page page-1" aria-label="A note for Nikita">
+            <div class="cover-mark">✦ &nbsp; THE INVITATION &nbsp; ✦</div>
+            <div class="cover-copy">
+                <p class="eyebrow">Two days, somehow</p>
+                <h1>For my<br><span>baby girl</span></h1>
+                <p class="name">Nikita <span>♡</span></p>
+                <p class="cover-quote">“I wasn't looking for you...<br>and then you appeared.”</p>
+            </div>
+            <button class="open-button" id="open-button" type="button">
+                <span>For you</span><span class="button-heart">♥</span>
+            </button>
+            <p class="tap-note">tap to continue <span>↓</span></p>
+        </section>
+
+        <section class="page page-2" aria-label="A poem for Nikita" aria-hidden="true">
+            <div class="poem-wrap">
+                <p class="poem-kicker">For My Baby Girl &nbsp; Nikita &nbsp; <span>♥</span></p>
+                <h2>Two Days, Somehow</h2>
+                <div class="poem" id="poem">
+                    <p>Two days ago,</p><p>you were just a name on my screen,</p><p>Nikita — a stranger, somewhere in between.</p><p>And somehow, in these little conversations we share,</p><p>you've become a thought I find everywhere.</p>
+                    <p>You call me beloved,</p><p>and somehow that name sounds sweeter from you.</p><p>So I'm learning Hindi, little by little,</p><p>just to understand the world you speak into.</p>
+                    <p>I love that shy little laugh of yours,</p><p>the way you blush when our words get close.</p><p>You try to hide it, but I notice it all—</p><p>the smile you pretend nobody knows.</p>
+                    <p>My baby girl,</p><p>I don't want to rush whatever this becomes.</p><p>I just want to know you, slowly,</p><p>one conversation, one smile, one moment at a time.</p>
+                    <p>I like your eyes most—</p><p>because they say things your words don't.</p><p>And your smile…</p><p>God, I could get lost there without knowing I'm gone.</p>
+                    <p>Maybe someday, when we're sitting close,</p><p>I'll kiss your forehead gently,</p><p>then your nose,</p><p>and if you let me, your lips—</p><p>not because I want to steal a moment,</p><p>but because I want to remember it.</p>
+                    <p>I'd kiss the little moles</p><p>that make you unmistakably you,</p><p>and hold your waist a little closer</p><p>like the world could wait for us.</p>
+                    <p>And maybe I'll kiss your feet too,</p><p>not because they're beautiful alone,</p><p>but because every part of you</p><p>deserves to be cherished.</p>
+                    <p>I know it's only been two days.</p><p>Maybe that's too soon for forever.</p><p>So I won't promise you forever.</p>
+                    <p>I'll just promise this—</p><p>while you're here,</p><p>I'll be here too.</p>
+                    <p>Learning your Hindi.</p><p>Learning your silence.</p><p>Learning your laughter.</p><p>Learning the girl behind the screen.</p>
+                    <p>Because, Nikita,</p><p>I don't just want to look at you.</p>
+                    <p class="closing-lines">I want to know you.</p><p class="closing-lines">I want to be with you in the moment.</p><p class="closing-lines">And maybe, someday,</p><p class="closing-lines">become one of the reasons you blush.</p>
                 </div>
-
-                <h2 class="name-reveal fade-in" style="animation-delay: 1s">Nikita.</h2>
-                
-                <p class="small-text fade-in" style="animation-delay: 1.5s">
-                    <em>Just a random profile.</em><br>
-                    <em>A random moment.</em><br>
-                    <em>A random message.</em>
-                </p>
+                <div class="poem-end">♥</div>
+                <p class="signature">— beloved</p>
+                <p class="for-you">for you, always in this moment</p>
             </div>
-
-            <div class="chat-section fade-in" style="animation-delay: 2s">
-                <div class="chat-bubble me">
-                    <p>"What are you doing?"</p>
-                </div>
-                <div class="chat-bubble you">
-                    <p>"Why should I tell you?"</p>
-                    <span class="emoji">😂</span>
-                </div>
-            </div>
-
-            <div class="reflection fade-in" style="animation-delay: 2.5s">
-                <p><em>I probably should've stopped there.</em></p>
-            </div>
-
-            <div class="reflection fade-in" style="animation-delay: 3s">
-                <p><em>But somehow... I didn't.</em></p>
-            </div>
-
-            <div class="scroll-indicator fade-in" style="animation-delay: 3.5s">
-                <p>Scroll ↓</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Page 2: The Poem -->
-    <section class="page page-2">
-        <div class="page-content">
-            <h1 class="poem-title">Somehow, It Was You</h1>
-            
-            <div class="poem-container">
-                <div class="verse fade-in-verse">I saw you on Instagram, completely by chance,<br>Just another face in a world full of endless scrolling.<br>I didn't know your name, your story, or your life,<br>I wasn't even looking for someone that night.</div>
-
-                <div class="verse fade-in-verse" style="animation-delay: 0.3s">But somehow, I stopped when I saw you there,<br>Maybe it was your smile, maybe something in your eyes.<br>I can't explain what made me stay,<br>I just know I didn't scroll away.</div>
-
-                <div class="verse fade-in-verse" style="animation-delay: 0.6s">So I sent a simple message, nothing too clever,<br>Just "what are you doing?"—that's all I had.<br>I thought maybe we'd talk for a little while,<br>Never imagined I'd remember every reply.</div>
-
-                <div class="verse fade-in-verse" style="animation-delay: 0.9s">Then came your "why should I tell you?"<br>And honestly, I didn't know what to say. 😂<br>You had this little attitude about you,<br>And somehow, I found it strangely cute.</div>
-
-                <div class="verse fade-in-verse" style="animation-delay: 1.2s">I said, "You don't have to, I was just curious,"<br>Trying to play it cool, pretending I didn't care.<br>Then I asked if I could know something about you,<br>And you simply said, "No." 😒</div>
-
-                <div class="verse fade-in-verse" style="animation-delay: 1.5s">You weren't in the mood to tell me anything,<br>And I probably should've just disappeared.<br>But there was something about the way you talked,<br>That made a random stranger suddenly feel interesting.</div>
-
-                <div class="verse fade-in-verse" style="animation-delay: 1.8s">Then somehow we started talking about weather,<br>And even that became a little argument. 😂<br>You laughed, I wondered why,<br>You said I was being sarcastic—<br>And somewhere between all those silly replies,<br>I realized I was enjoying this conversation.</div>
-
-                <div class="verse fade-in-verse" style="animation-delay: 2.1s">Maybe that's what makes some people different,<br>You don't need a perfect first conversation.<br>Sometimes it's the awkward replies,<br>The teasing, the sarcasm, the unexpected moments,<br>That make you want to stay a little longer.</div>
-
-                <div class="verse fade-in-verse" style="animation-delay: 2.4s">I found you randomly on Instagram,<br>With no plan, no expectations, nothing in mind.<br>But now, when I think about that random scroll,<br>I wonder how one little moment changed my night.</div>
-
-                <div class="verse fade-in-verse" style="animation-delay: 2.7s">Maybe it was just an algorithm,<br>Maybe it was simply coincidence.<br>But if you ask me what I think about it now,<br>I'd say I'm glad Instagram made that mistake—or maybe it didn't.</div>
-
-                <div class="verse fade-in-verse" style="animation-delay: 3s">Because among thousands of faces I could have seen,<br>Somehow, it showed me yours.<br>And I still don't know where this conversation will go,<br>Or whether you'll laugh at this poem too.</div>
-
-                <div class="verse fade-in-verse" style="animation-delay: 3.3s">But one thing I know for sure—<br>That random moment wasn't completely random to me.<br>Because I came to Instagram just to scroll,<br><strong>And somehow, I ended up finding you.</strong> ❤️</div>
-            </div>
-
-            <div class="spacer"></div>
-
-            <div class="closing">
-                <h2 class="name-closing">Nikita ✦</h2>
-                <p class="closing-message"><em>I'm glad I didn't scroll past.</em></p>
-            </div>
-
-            <div class="attribution">
-                <p>— Sathyan</p>
-            </div>
-        </div>
-    </section>
+            <button class="music-toggle" id="music-toggle" type="button" aria-label="Pause music">♫</button>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>

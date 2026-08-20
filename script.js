@@ -1,112 +1,89 @@
-// Generate random stars
+const book = document.querySelector('.book');
+const openButton = document.querySelector('#open-button');
+const musicToggle = document.querySelector('#music-toggle');
+const starsContainer = document.querySelector('.stars-container');
+
+let audioContext;
+let musicPlaying = false;
+
 function generateStars() {
-    const starsContainer = document.querySelector('.stars-container');
-    const starCount = window.innerWidth > 768 ? 200 : 100;
-    
-    for (let i = 0; i < starCount; i++) {
-        const star = document.createElement('div');
+    starsContainer.replaceChildren();
+    const starCount = window.innerWidth > 700 ? 150 : 85;
+    for (let index = 0; index < starCount; index += 1) {
+        const star = document.createElement('span');
         star.className = 'star';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.animationDelay = Math.random() * 3 + 's';
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.animationDelay = `${Math.random() * 4}s`;
         starsContainer.appendChild(star);
     }
 }
 
-// Initialize stars on load
-window.addEventListener('load', () => {
-    generateStars();
-});
-
-// Trigger animations on scroll into view
-const observerOptions = {
-    threshold: 0.2,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && entry.target.classList.contains('fade-in')) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe fade-in elements
-document.querySelectorAll('.fade-in').forEach(el => {
-    observer.observe(el);
-});
-
-// Poem verses appear on scroll
-const verseObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && entry.target.classList.contains('fade-in-verse')) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -20px 0px'
-});
-
-document.querySelectorAll('.verse').forEach(verse => {
-    verseObserver.observe(verse);
-});
-
-// Floating heart animation on poem click
-document.addEventListener('click', (e) => {
-    if (e.target.closest('.page-2')) {
-        createFloatingHeart(e.clientX, e.clientY);
-    }
-});
-
 function createFloatingHeart(x, y) {
-    const heart = document.createElement('div');
-    heart.textContent = '❤️';
-    heart.style.position = 'fixed';
-    heart.style.left = x + 'px';
-    heart.style.top = y + 'px';
-    heart.style.pointerEvents = 'none';
-    heart.style.fontSize = '2em';
-    heart.style.zIndex = '999';
-    heart.style.animation = 'floatUp 2s ease-out forwards';
-    
+    const heart = document.createElement('span');
+    heart.className = 'floating-heart';
+    heart.textContent = Math.random() > 0.5 ? '♥' : '♡';
+    heart.style.left = `${x + (Math.random() * 44 - 22)}px`;
+    heart.style.top = `${y + (Math.random() * 24 - 12)}px`;
     document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 2000);
+    heart.addEventListener('animationend', () => heart.remove());
 }
 
-// Add float-up animation
-const animStyle = document.createElement('style');
-animStyle.textContent = `
-    @keyframes floatUp {
-        0% {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-        100% {
-            opacity: 0;
-            transform: translateY(-80px) scale(0.5);
-        }
+function startAmbientMusic() {
+    audioContext = audioContext || new AudioContext();
+    const master = audioContext.createGain();
+    master.gain.value = 0.035;
+    master.connect(audioContext.destination);
+    [261.63, 329.63, 392].forEach((frequency, index) => {
+        const oscillator = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+        oscillator.type = 'sine';
+        oscillator.frequency.value = frequency;
+        gain.gain.value = index === 0 ? 0.34 : 0.2;
+        oscillator.connect(gain).connect(master);
+        oscillator.start();
+    });
+    musicPlaying = true;
+    musicToggle.textContent = 'Ⅱ';
+    musicToggle.setAttribute('aria-label', 'Pause music');
+}
+
+function toggleMusic() {
+    if (!audioContext) return;
+    if (musicPlaying) {
+        audioContext.suspend();
+        musicPlaying = false;
+        musicToggle.textContent = '♫';
+        musicToggle.setAttribute('aria-label', 'Play music');
+    } else {
+        audioContext.resume();
+        musicPlaying = true;
+        musicToggle.textContent = 'Ⅱ';
+        musicToggle.setAttribute('aria-label', 'Pause music');
     }
-`;
-document.head.appendChild(animStyle);
+}
 
-// Parallax moon effect on scroll
-window.addEventListener('scroll', () => {
-    const moon = document.querySelector('.moon');
-    const scrollY = window.scrollY;
-    moon.style.transform = `translateY(${scrollY * 0.3}px)`;
+openButton.addEventListener('click', (event) => {
+    if (book.classList.contains('is-open')) return;
+    book.classList.add('is-open');
+    const poemPage = document.querySelector('.page-2');
+    poemPage.setAttribute('aria-hidden', 'false');
+    poemPage.scrollTop = 0;
+    document.querySelectorAll('.poem p').forEach((line, index) => {
+        line.style.animationDelay = `${0.3 + index * 0.14}s`;
+    });
+    startAmbientMusic();
+    for (let index = 0; index < 12; index += 1) {
+        window.setTimeout(() => createFloatingHeart(event.clientX, event.clientY), index * 55);
+    }
 });
 
-// Regenerate stars on window resize
-let resizeTimer;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-        const starsContainer = document.querySelector('.stars-container');
-        starsContainer.innerHTML = '';
-        generateStars();
-    }, 250);
+musicToggle.addEventListener('click', toggleMusic);
+document.addEventListener('click', (event) => {
+    if (book.classList.contains('is-open') && !event.target.closest('button')) {
+        createFloatingHeart(event.clientX, event.clientY);
+    }
 });
+
+generateStars();
+window.addEventListener('resize', generateStars);
