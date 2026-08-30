@@ -1,21 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600&family=DM+Mono:wght@400;500&family=Parisienne&display=swap');
 
-:root { --night: #080506; --ink: #f8e9e7; --muted: #c59a9a; --red: #c52d3f; --crimson: #8f1728; --wine: #3b0b16; }
+:root { --night: #0d1b1a; --ink: #f8e9e7; --muted: #9fa88a; --red: #d4a574; --crimson: #2d5a4f; --wine: #1a3a35; }
 * { box-sizing: border-box; }
 html, body { margin: 0; min-height: 100%; }
 body { background: var(--night); color: var(--ink); font-family: 'Cormorant Garamond', Georgia, serif; overflow: hidden; }
 button { font: inherit; }
 .stars-container, .heart-field { inset: 0; overflow: hidden; pointer-events: none; position: fixed; z-index: 0; }
-.star { animation: twinkle 4s ease-in-out infinite; background: #e94b5c; border-radius: 50%; box-shadow: 0 0 6px rgba(229, 75, 92, .75); height: 2px; opacity: .45; position: absolute; width: 2px; }
-.ambient-glow { background: radial-gradient(ellipse, rgba(154, 18, 40, .3), transparent 68%); height: 80vh; left: 50%; pointer-events: none; position: fixed; top: -28vh; transform: translateX(-50%); width: 95vw; z-index: 0; }
+.star { animation: twinkle 4s ease-in-out infinite; background: #d4a574; border-radius: 50%; box-shadow: 0 0 6px rgba(212, 165, 116, .75); height: 2px; opacity: .45; position: absolute; width: 2px; }
+.ambient-glow { background: radial-gradient(ellipse, rgba(45, 90, 79, .3), transparent 68%); height: 80vh; left: 50%; pointer-events: none; position: fixed; top: -28vh; transform: translateX(-50%); width: 95vw; z-index: 0; }
 .book { height: 100svh; overflow: hidden; position: relative; width: 100%; z-index: 1; }
 .page { align-items: center; display: flex; inset: 0; justify-content: center; min-height: 100svh; overflow-y: auto; padding: 42px 24px; position: absolute; transition: transform 1.15s cubic-bezier(.77, 0, .18, 1), opacity .8s ease; }
-.page-1 { background: radial-gradient(circle at 50% 36%, rgba(111, 13, 30, .42), transparent 42%), linear-gradient(145deg, rgba(8, 5, 6, .96), rgba(35, 7, 14, .98)); flex-direction: column; justify-content: space-between; text-align: center; transform-origin: left center; z-index: 3; }
-.page-2 { align-items: flex-start; background: radial-gradient(circle at 20% 20%, rgba(132, 19, 39, .2), transparent 32%), #100708; opacity: 0; padding-top: clamp(42px, 8vh, 88px); transform: translateX(100%); z-index: 2; }
-.book::after { background: radial-gradient(circle, rgba(205, 37, 57, .42), transparent 65%); content: ''; inset: -30%; opacity: 0; pointer-events: none; position: absolute; transform: scale(.25); z-index: 4; }
+.page-1 { background: radial-gradient(circle at 50% 36%, rgba(45, 90, 79, .42), transparent 42%), linear-gradient(145deg, rgba(13, 27, 26, .96), rgba(20, 45, 40, .98)); flex-direction: column; justify-content: space-between; text-align: center; transform-origin: left center; z-index: 3; }
+.page-2 { align-items: flex-start; background: radial-gradient(circle at 20% 20%, rgba(45, 90, 79, .2), transparent 32%), #0d1b1a; opacity: 0; padding-top: clamp(42px, 8vh, 88px); transform: translateX(100%); z-index: 2; }
+.book::after { background: radial-gradient(circle, rgba(45, 90, 79, .42), transparent 65%); content: ''; inset: -30%; opacity: 0; pointer-events: none; position: absolute; transform: scale(.25); z-index: 4; }
 .book.is-open::after { animation: redBloom 1.3s ease-out forwards; }
-.book.is-open .page-1 { opacity: 0; pointer-events: none; transform: perspective(1400px) rotateY(-96deg); }
-.book.is-open .page-2 { opacity: 1; transform: translateX(0); }
 .cover-mark, .poem-kicker, .tap-note, .for-you { color: var(--muted); font-family: 'DM Mono', monospace; font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; }
 .cover-mark { animation: appear 1.4s both; }
 .cover-copy { margin-top: -2vh; }
@@ -25,8 +23,8 @@ button { font: inherit; }
 .name { color: var(--ink); font-size: 1.45rem; letter-spacing: .12em; margin: 0; text-transform: uppercase; }
 .name span { color: var(--red); font-size: 1.5rem; }
 .cover-quote { color: var(--muted); font-size: 1.3rem; font-style: italic; line-height: 1.45; margin-top: 3rem; }
-.open-button { background: rgba(197, 45, 63, .1); border: 1px solid rgba(218, 63, 81, .7); color: var(--ink); cursor: pointer; font-family: 'DM Mono', monospace; font-size: .72rem; letter-spacing: .16em; padding: 1rem 1.5rem; text-transform: uppercase; transition: background .3s, box-shadow .3s, transform .3s; }
-.open-button:hover, .open-button:focus-visible { background: rgba(197, 45, 63, .23); box-shadow: 0 0 28px rgba(197, 45, 63, .3); transform: translateY(-3px); }
+.open-button { background: rgba(212, 165, 116, .1); border: 1px solid rgba(212, 165, 116, .7); color: var(--ink); cursor: pointer; font-family: 'DM Mono', monospace; font-size: .72rem; letter-spacing: .16em; padding: 1rem 1.5rem; text-transform: uppercase; transition: background .3s, box-shadow .3s, transform .3s; }
+.open-button:hover, .open-button:focus-visible { background: rgba(212, 165, 116, .23); box-shadow: 0 0 28px rgba(212, 165, 116, .3); transform: translateY(-3px); }
 .button-heart { color: var(--red); margin-left: .8rem; }
 .tap-note { margin: -1rem 0 0; }
 .tap-note span { display: inline-block; font-size: 1rem; margin-left: .4rem; }
@@ -38,11 +36,11 @@ button { font: inherit; }
 .poem p { margin: .1rem 0; opacity: 0; transform: translateY(12px); }
 .book.is-open .poem p { animation: lineIn .7s ease forwards; }
 .poem p:nth-of-type(6), .poem p:nth-of-type(11), .poem p:nth-of-type(16), .poem p:nth-of-type(21) { margin-top: 1.5rem; }
-.poem .closing-lines { color: #ed6974; font-weight: 600; }
+.poem .closing-lines { color: #c8a882; font-weight: 600; }
 .poem-end { color: var(--red); font-size: 1.45rem; margin: 2.2rem 0 1.5rem; }
 .signature { color: var(--red); font-family: Parisienne, cursive; font-size: 2rem; margin: 0; }
 .for-you { font-size: .55rem; margin-top: .6rem; }
-.music-toggle { background: rgba(197, 45, 63, .1); border: 1px solid rgba(218, 63, 81, .5); border-radius: 50%; bottom: 24px; color: var(--red); cursor: pointer; height: 38px; position: fixed; right: 24px; width: 38px; }
+.music-toggle { background: rgba(212, 165, 116, .1); border: 1px solid rgba(212, 165, 116, .5); border-radius: 50%; bottom: 24px; color: var(--red); cursor: pointer; height: 38px; position: fixed; right: 24px; width: 38px; }
 @keyframes twinkle { 0%, 100% { opacity: .2; transform: scale(.8); } 50% { opacity: .9; transform: scale(1.4); } }
 @keyframes appear { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes lineIn { to { opacity: 1; transform: translateY(0); } }
