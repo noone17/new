@@ -1,43 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Found in the Backwaters</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600&family=DM+Mono:wght@400;500&family=Parisienne&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Fatima</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="stars-container"></div>
-    <div class="ambient-glow"></div>
-    <div class="heart-field" aria-hidden="true"></div>
 
-    <main class="book is-open" aria-live="polite">
-        <section class="page page-1" aria-label="A poem for D">
-            <div class="poem-wrap">
-                <p class="poem-kicker">To the girl I found by chance &nbsp; <span>♥</span></p>
-                <h2>Found by Chance</h2>
-                <div class="poem" id="poem">
-                    <p>I found you where I wasn't looking,</p><p>just a name beneath a "suggested" screen,</p><p>one little request, one quiet accept—</p><p>and somehow, you became a thought in between.</p>
-                    <p>I don't know your favorite song,</p><p>or the stories you keep untold,</p><p>I barely know the person behind the pictures,</p><p>yet talking to you never felt old.</p>
-                    <p>And I call you <strong>D</strong>,</p><p>though I know nobody else does.</p><p>Maybe that's my little way</p><p>of making something ordinary feel like ours.</p>
-                    <p>You're cute—</p><p>I won't pretend I didn't notice.</p><p>But it wasn't only the way you looked;</p><p>there was something in talking to you</p><p>that made me want to stay a little longer.</p>
-                    <p>Then I asked,</p><p>"Am I disturbing you?"</p>
-                    <p>You said,</p><p>"Little bit."</p>
-                    <p>So I said goodbye.</p>
-                    <p>Not because I wanted to,</p><p>but because sometimes</p><p>liking a conversation</p><p>also means knowing when to leave it.</p>
-                    <p class="closing-lines">So here I am,</p><p class="closing-lines">not asking you for anything,</p><p class="closing-lines">not expecting you to come back—</p><p class="closing-lines">just leaving these few words here,</p>
-                    <p class="closing-lines">for the girl I met by accident,</p><p class="closing-lines">the girl I barely know,</p><p class="closing-lines">but somehow still think about</p><p class="closing-lines">a little more than I probably should.</p>
-                </div>
-                <div class="poem-end">♥</div>
-                <p class="signature">— Stranger</p>
-                <p class="for-you">for you, always in this moment</p>
-            </div>
-        </section>
-    </main>
+  <!-- ============================================================
+       The Complete Poem — For Fatima
+  ============================================================ -->
+  <section id="poem" class="section section--poem">
+    <canvas id="poem-stars"></canvas>
+    <div class="poem-moon"></div>
 
-    <script src="script.js"></script>
+    <!-- Falling feather -->
+    <div class="poem-feather" id="poem-feather">
+      <svg viewBox="0 0 60 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30 10 Q45 50 40 90 Q35 130 30 170" stroke="#E8D8B0" stroke-width="1.2" stroke-opacity="0.8"/>
+        <path d="M30 20 Q50 35 48 55 Q46 70 40 75" stroke="#E8D8B0" stroke-width="0.7" stroke-opacity="0.5"/>
+        <path d="M30 35 Q52 45 50 65 Q48 78 42 82" stroke="#E8D8B0" stroke-width="0.7" stroke-opacity="0.45"/>
+        <path d="M30 50 Q53 58 51 76 Q49 88 43 93" stroke="#E8D8B0" stroke-width="0.6" stroke-opacity="0.4"/>
+        <path d="M30 20 Q10 35 12 55 Q14 70 20 75" stroke="#E8D8B0" stroke-width="0.7" stroke-opacity="0.5"/>
+        <path d="M30 35 Q8 45 10 65 Q12 78 18 82" stroke="#E8D8B0" stroke-width="0.7" stroke-opacity="0.45"/>
+        <path d="M30 50 Q7 58 9 76 Q11 88 17 93" stroke="#E8D8B0" stroke-width="0.6" stroke-opacity="0.4"/>
+        <path d="M30 70 Q54 78 52 96 Q50 108 44 112" stroke="#E8D8B0" stroke-width="0.5" stroke-opacity="0.35"/>
+        <path d="M30 70 Q6 78 8 96 Q10 108 16 112" stroke="#E8D8B0" stroke-width="0.5" stroke-opacity="0.35"/>
+      </svg>
+    </div>
+
+    <div class="poem-container">
+
+      <!-- Opening address -->
+      <p class="poem-address reveal-poem" data-delay="0">Fatima,</p>
+
+      <!-- Stanza 1 — The Aisle -->
+      <div class="poem-stanza reveal-poem" data-delay="1">
+        <p>I met you in an aisle,</p>
+        <p>and somehow a simple hello</p>
+        <p>turned into days of talking.</p>
+      </div>
+
+      <!-- Stanza 2 — Maybe -->
+      <div class="poem-stanza reveal-poem" data-delay="2">
+        <p>Maybe it's your smile,</p>
+        <p>maybe the way you make me laugh,</p>
+        <p>or maybe it's just how easy</p>
+        <p>it feels to talk to you.</p>
+      </div>
+
+      <!-- Stanza 3 — Traditional / Saree -->
+      <div class="poem-stanza reveal-poem" data-delay="3">
+        <p>There's something beautiful</p>
+        <p>about the traditional woman I see in you,</p>
+        <p>especially when you showed me</p>
+        <p>that Onam saree.</p>
+        <p class="poem-line--light">I honestly didn't know</p>
+        <p class="poem-line--light">a picture could leave me that speechless.</p>
+      </div>
+
+      <!-- Stanza 4 — Feathers -->
+      <div class="poem-stanza reveal-poem" data-delay="4">
+        <p class="poem-line--accent">Beautiful feathers suit a beautiful bird,</p>
+        <p class="poem-line--accent">and somehow those colours just made sense on you.</p>
+        <p class="poem-line--light">Not because the saree makes you beautiful,</p>
+        <p class="poem-line--light">but because you made the saree</p>
+        <p class="poem-line--light">look beautiful too.</p>
+      </div>
+
+      <!-- Divider -->
+      <div class="poem-divider reveal-poem" data-delay="5">
+        <svg viewBox="0 0 300 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="15" x2="120" y2="15" stroke="#E8D8B0" stroke-width="0.4" stroke-opacity="0.2"/>
+          <circle cx="150" cy="15" r="3" stroke="#E8D8B0" stroke-width="0.5" stroke-opacity="0.4" fill="none"/>
+          <line x1="180" y1="15" x2="300" y2="15" stroke="#E8D8B0" stroke-width="0.4" stroke-opacity="0.2"/>
+        </svg>
+      </div>
+
+      <!-- Stanza 5 — Beach -->
+      <div class="poem-stanza reveal-poem" data-delay="6">
+        <p>Maybe one night,</p>
+        <p>when the city finally goes quiet,</p>
+        <p>I'd like to take you to the beach.</p>
+      </div>
+
+      <!-- Stanza 6 — Just you and me -->
+      <div class="poem-stanza poem-stanza--indented reveal-poem" data-delay="7">
+        <p>Just you and me,</p>
+        <p>the moon above us,</p>
+        <p>the waves beside us,</p>
+        <p class="poem-line--accent">and your hand in mine.</p>
+      </div>
+
+      <!-- Stanza 7 — Hold -->
+      <div class="poem-stanza poem-stanza--indented reveal-poem" data-delay="8">
+        <p>I'd hold your hand a little longer,</p>
+        <p>walk a little slower,</p>
+        <p>maybe let our fingers intertwine</p>
+        <p>and forget about everything else for a while.</p>
+      </div>
+
+      <!-- Stanza 8 — No rush -->
+      <div class="poem-stanza reveal-poem" data-delay="9">
+        <p>No rush, no plans—</p>
+        <p>just walking beside you under the moonlight,</p>
+        <p>talking about random things,</p>
+        <p>laughing at things that aren't even funny,</p>
+        <p>and secretly wishing</p>
+        <p class="poem-line--accent">the walk would never end.</p>
+      </div>
+
+      <!-- Divider before coda -->
+      <div class="poem-divider reveal-poem" data-delay="10">
+        <svg viewBox="0 0 300 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="15" x2="120" y2="15" stroke="#E8D8B0" stroke-width="0.4" stroke-opacity="0.2"/>
+          <circle cx="150" cy="15" r="3" stroke="#E8D8B0" stroke-width="0.5" stroke-opacity="0.4" fill="none"/>
+          <line x1="180" y1="15" x2="300" y2="15" stroke="#E8D8B0" stroke-width="0.4" stroke-opacity="0.2"/>
+        </svg>
+      </div>
+
+      <!-- Coda — For now -->
+      <div class="poem-stanza reveal-poem" data-delay="11">
+        <p class="poem-line--light">For now, I just know…</p>
+      </div>
+
+      <!-- Coda — I met a girl -->
+      <div class="poem-stanza reveal-poem" data-delay="12">
+        <p class="poem-line--light">I met a girl named</p>
+        <p class="poem-coda-name">Fatima</p>
+      </div>
+
+      <!-- Coda — description -->
+      <div class="poem-stanza reveal-poem" data-delay="13">
+        <p class="poem-line--light">with a beautiful smile,</p>
+        <p class="poem-line--light">a wicked sense of humour,</p>
+        <p class="poem-line--light">a guarded heart…</p>
+      </div>
+
+      <!-- Coda — feather quote -->
+      <div class="poem-stanza reveal-poem" data-delay="14">
+        <p class="poem-line--accent poem-line--quote">"and feathers that belong</p>
+        <p class="poem-line--accent poem-line--quote">to a beautiful bird." 🪶</p>
+      </div>
+
+      <!-- PS -->
+      <div class="poem-ps-block reveal-poem" data-delay="15">
+        <p class="poem-ps">P.S. I'm still trying to prove I'm a good boy. 😌</p>
+        <p class="poem-cook">"So… about that cooking?"</p>
+      </div>
+
+    </div>
+
+    <!-- Bottom geometry -->
+    <div class="geo-bottom">
+      <svg viewBox="0 0 600 50" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="300,5 315,25 300,45 285,25" stroke="#E8D8B0" stroke-width="0.6" stroke-opacity="0.25" fill="none"/>
+        <polygon points="260,5 275,25 260,45 245,25" stroke="#E8D8B0" stroke-width="0.4" stroke-opacity="0.12" fill="none"/>
+        <polygon points="340,5 355,25 340,45 325,25" stroke="#E8D8B0" stroke-width="0.4" stroke-opacity="0.12" fill="none"/>
+        <line x1="0" y1="25" x2="235" y2="25" stroke="#E8D8B0" stroke-width="0.3" stroke-opacity="0.1"/>
+        <line x1="365" y1="25" x2="600" y2="25" stroke="#E8D8B0" stroke-width="0.3" stroke-opacity="0.1"/>
+      </svg>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>

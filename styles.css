@@ -1,51 +1,281 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600&family=DM+Mono:wght@400;500&family=Parisienne&display=swap');
+/* ============================================================
+   FOR FATIMA — styles.css
+   The Complete Poem
+   Colors:
+     --navy:  #07111F  midnight navy
+     --deep:  #10243A  deep blue
+     --gold:  #E8D8B0  muted gold
+     --ivory: #F5F1E8  warm ivory
+============================================================ */
 
-:root { --night: #0d1b1a; --ink: #f8e9e7; --muted: #9fa88a; --red: #d4a574; --crimson: #2d5a4f; --wine: #1a3a35; }
-* { box-sizing: border-box; }
-html, body { margin: 0; min-height: 100%; }
-body { background: var(--night); color: var(--ink); font-family: 'Cormorant Garamond', Georgia, serif; overflow: hidden; }
-button { font: inherit; }
-.stars-container, .heart-field { inset: 0; overflow: hidden; pointer-events: none; position: fixed; z-index: 0; }
-.star { animation: twinkle 4s ease-in-out infinite; background: #d4a574; border-radius: 50%; box-shadow: 0 0 6px rgba(212, 165, 116, .75); height: 2px; opacity: .45; position: absolute; width: 2px; }
-.ambient-glow { background: radial-gradient(ellipse, rgba(45, 90, 79, .3), transparent 68%); height: 80vh; left: 50%; pointer-events: none; position: fixed; top: -28vh; transform: translateX(-50%); width: 95vw; z-index: 0; }
-.book { height: 100svh; overflow: hidden; position: relative; width: 100%; z-index: 1; }
-.page { align-items: center; display: flex; inset: 0; justify-content: center; min-height: 100svh; overflow-y: auto; padding: 42px 24px; position: absolute; transition: transform 1.15s cubic-bezier(.77, 0, .18, 1), opacity .8s ease; }
-.page-1 { background: radial-gradient(circle at 50% 36%, rgba(45, 90, 79, .42), transparent 42%), linear-gradient(145deg, rgba(13, 27, 26, .96), rgba(20, 45, 40, .98)); flex-direction: column; justify-content: space-between; text-align: center; transform-origin: left center; z-index: 3; }
-.page-2 { align-items: flex-start; background: radial-gradient(circle at 20% 20%, rgba(45, 90, 79, .2), transparent 32%), #0d1b1a; opacity: 0; padding-top: clamp(42px, 8vh, 88px); transform: translateX(100%); z-index: 2; }
-.book::after { background: radial-gradient(circle, rgba(45, 90, 79, .42), transparent 65%); content: ''; inset: -30%; opacity: 0; pointer-events: none; position: absolute; transform: scale(.25); z-index: 4; }
-.book.is-open::after { animation: redBloom 1.3s ease-out forwards; }
-.cover-mark, .poem-kicker, .tap-note, .for-you { color: var(--muted); font-family: 'DM Mono', monospace; font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; }
-.cover-mark { animation: appear 1.4s both; }
-.cover-copy { margin-top: -2vh; }
-.eyebrow { color: var(--red); font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .24em; text-transform: uppercase; }
-.cover-copy h1 { font-size: clamp(4.5rem, 13vw, 9rem); font-weight: 400; line-height: .72; margin: 1.5rem 0 2.2rem; }
-.cover-copy h1 span { color: var(--red); font-family: Parisienne, cursive; font-size: 1.12em; }
-.name { color: var(--ink); font-size: 1.45rem; letter-spacing: .12em; margin: 0; text-transform: uppercase; }
-.name span { color: var(--red); font-size: 1.5rem; }
-.cover-quote { color: var(--muted); font-size: 1.3rem; font-style: italic; line-height: 1.45; margin-top: 3rem; }
-.open-button { background: rgba(212, 165, 116, .1); border: 1px solid rgba(212, 165, 116, .7); color: var(--ink); cursor: pointer; font-family: 'DM Mono', monospace; font-size: .72rem; letter-spacing: .16em; padding: 1rem 1.5rem; text-transform: uppercase; transition: background .3s, box-shadow .3s, transform .3s; }
-.open-button:hover, .open-button:focus-visible { background: rgba(212, 165, 116, .23); box-shadow: 0 0 28px rgba(212, 165, 116, .3); transform: translateY(-3px); }
-.button-heart { color: var(--red); margin-left: .8rem; }
-.tap-note { margin: -1rem 0 0; }
-.tap-note span { display: inline-block; font-size: 1rem; margin-left: .4rem; }
-.poem-wrap { margin: 0 auto; max-width: 600px; text-align: center; width: 100%; }
-.poem-kicker { color: var(--red); margin: 0 0 1rem; }
-.poem-kicker span { color: var(--red); font-size: 1rem; }
-.poem-wrap h2 { color: var(--ink); font-family: Parisienne, cursive; font-size: clamp(2.8rem, 8vw, 4.9rem); font-weight: 400; line-height: .95; margin: 0 0 3rem; }
-.poem { color: #f0d9d6; font-family: Caveat, cursive; font-size: clamp(1.7rem, 3.5vw, 2.25rem); line-height: 1.22; }
-.poem p { margin: .1rem 0; opacity: 0; transform: translateY(12px); }
-.book.is-open .poem p { animation: lineIn .7s ease forwards; }
-.poem p:nth-of-type(6), .poem p:nth-of-type(11), .poem p:nth-of-type(16), .poem p:nth-of-type(21) { margin-top: 1.5rem; }
-.poem .closing-lines { color: #c8a882; font-weight: 600; }
-.poem-end { color: var(--red); font-size: 1.45rem; margin: 2.2rem 0 1.5rem; }
-.signature { color: var(--red); font-family: Parisienne, cursive; font-size: 2rem; margin: 0; }
-.for-you { font-size: .55rem; margin-top: .6rem; }
-.music-toggle { background: rgba(212, 165, 116, .1); border: 1px solid rgba(212, 165, 116, .5); border-radius: 50%; bottom: 24px; color: var(--red); cursor: pointer; height: 38px; position: fixed; right: 24px; width: 38px; }
-@keyframes twinkle { 0%, 100% { opacity: .2; transform: scale(.8); } 50% { opacity: .9; transform: scale(1.4); } }
-@keyframes appear { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes lineIn { to { opacity: 1; transform: translateY(0); } }
-@keyframes floatHeart { 0% { opacity: 0; transform: translateY(20px) scale(.6) rotate(-10deg); } 25% { opacity: .9; } 100% { opacity: 0; transform: translateY(-160px) scale(1.1) rotate(18deg); } }
-@keyframes redBloom { 0% { opacity: 0; transform: scale(.25); } 30% { opacity: 1; } 100% { opacity: 0; transform: scale(1); } }
-.floating-heart { animation: floatHeart 2.4s ease-out forwards; color: var(--red); font-size: 1.2rem; position: fixed; z-index: 5; }
-@media (max-width: 560px) { .page { padding: 32px 20px; } .cover-copy h1 { font-size: clamp(4rem, 18vw, 6rem); } .cover-quote { font-size: 1.15rem; margin-top: 2.2rem; } .poem-wrap h2 { margin-bottom: 2rem; } .poem { font-size: 1.55rem; } }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+/* ── Reset & Base ─────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --navy:  #07111F;
+  --deep:  #10243A;
+  --gold:  #E8D8B0;
+  --ivory: #F5F1E8;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans:  'DM Sans', 'Inter', sans-serif;
+  --script:'Great Vibes', cursive;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--navy);
+  color: var(--ivory);
+  font-family: var(--sans);
+  overflow-x: hidden;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Section base ─────────────────────────────────────────── */
+.section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ── Geo bottom divider ───────────────────────────────────── */
+.geo-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* ============================================================
+   POEM SECTION
+============================================================ */
+.section--poem {
+  background: linear-gradient(to bottom, #07111F 0%, #0A1928 55%, #07111F 100%);
+  min-height: 100vh;
+  padding: 8vh 2rem 6vh;
+  align-items: center;
+}
+
+/* Twinkling stars canvas */
+#poem-stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Crescent moon */
+.poem-moon {
+  position: absolute;
+  top: 5vh;
+  right: 8vw;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow:
+    inset -15px -2px 0 3px rgba(232,216,176,0.55),
+    0 0 28px rgba(232,216,176,0.09);
+  z-index: 1;
+  pointer-events: none;
+  animation: moonPulse 5s ease-in-out infinite;
+}
+
+@keyframes moonPulse {
+  0%, 100% { opacity: 0.7; }
+  50%       { opacity: 1;   }
+}
+
+/* Falling feather */
+.poem-feather {
+  position: absolute;
+  top: -60px;
+  left: 52%;
+  width: 55px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  animation: featherFall 9s 0.8s ease-in-out forwards;
+  animation-play-state: paused;
+}
+
+@keyframes featherFall {
+  0%   { top: -60px;  opacity: 0;    transform: translateX(0)    rotate(0deg);   }
+  8%   {              opacity: 0.85;                                              }
+  55%  { top: 30vh;   transform: translateX(18px)  rotate(14deg);                }
+  78%  { top: 56vh;   transform: translateX(-12px) rotate(-7deg);                }
+  100% { top: 74vh;   opacity: 0.55; transform: translateX(4px)  rotate(5deg);   }
+}
+
+/* ── Poem container ───────────────────────────────────────── */
+.poem-container {
+  position: relative;
+  z-index: 3;
+  max-width: 620px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.8rem;
+  padding: 2rem 1.2rem 4rem;
+}
+
+/* Opening "Fatima," in script */
+.poem-address {
+  font-family: var(--script);
+  font-size: clamp(3rem, 8vw, 5rem);
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-shadow: 0 0 40px rgba(232,216,176,0.22);
+}
+
+/* ── Stanzas ──────────────────────────────────────────────── */
+.poem-stanza {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* Indented stanzas (beach / hand sections) */
+.poem-stanza--indented {
+  padding-left: clamp(1rem, 4vw, 2.5rem);
+  border-left: 1px solid rgba(232,216,176,0.13);
+}
+
+/* Default line */
+.poem-stanza p {
+  font-family: var(--serif);
+  font-size: clamp(1rem, 2.4vw, 1.28rem);
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(245,241,232,0.72);
+  letter-spacing: 0.03em;
+  line-height: 1.8;
+}
+
+/* Gold accent lines */
+.poem-stanza p.poem-line--accent {
+  color: rgba(232,216,176,0.88);
+  font-size: clamp(1.05rem, 2.6vw, 1.36rem);
+}
+
+/* Dimmer lines */
+.poem-stanza p.poem-line--light {
+  color: rgba(245,241,232,0.44);
+}
+
+/* Italic quote style */
+.poem-line--quote {
+  font-style: italic;
+  letter-spacing: 0.04em;
+}
+
+/* ── SVG dividers ─────────────────────────────────────────── */
+.poem-divider {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: -0.4rem 0;
+}
+
+.poem-divider svg {
+  width: min(280px, 78%);
+}
+
+/* ── Coda — "Fatima" name ─────────────────────────────────── */
+.poem-coda-name {
+  font-family: var(--script) !important;
+  font-size: clamp(2.8rem, 8vw, 4.5rem) !important;
+  font-style: normal !important;
+  color: var(--gold) !important;
+  letter-spacing: 0.04em;
+  line-height: 1.15 !important;
+  text-shadow: 0 0 35px rgba(232,216,176,0.22);
+  margin-top: 0.15rem;
+}
+
+/* ── PS block ─────────────────────────────────────────────── */
+.poem-ps-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(232,216,176,0.08);
+}
+
+.poem-ps {
+  font-family: var(--sans);
+  font-size: clamp(0.82rem, 1.7vw, 0.94rem);
+  color: rgba(245,241,232,0.36);
+  letter-spacing: 0.04em;
+}
+
+.poem-cook {
+  font-family: var(--serif);
+  font-size: clamp(0.9rem, 2vw, 1.08rem);
+  font-style: italic;
+  color: rgba(232,216,176,0.4);
+  letter-spacing: 0.05em;
+}
+
+/* ============================================================
+   SCROLL-REVEAL
+============================================================ */
+.reveal-poem {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-poem.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   SCROLLBAR
+============================================================ */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb {
+  background: rgba(232,216,176,0.18);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(232,216,176,0.38);
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 600px) {
+  .poem-moon {
+    width: 40px;
+    height: 40px;
+    top: 3.5vh;
+    right: 5vw;
+    box-shadow: inset -11px -2px 0 2px rgba(232,216,176,0.5);
+  }
+
+  .poem-container {
+    gap: 2.2rem;
+    padding: 1.5rem 0.8rem 3rem;
+  }
+}
