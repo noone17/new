@@ -135,7 +135,14 @@ body {
   padding: 2rem 1.2rem 4rem;
 }
 
-/* Opening "Fatima," in script */
+/* Title block wrapper */
+.poem-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* Opening name in script */
 .poem-address {
   font-family: var(--script);
   font-size: clamp(3rem, 8vw, 5rem);
@@ -143,6 +150,23 @@ body {
   letter-spacing: 0.04em;
   line-height: 1;
   text-shadow: 0 0 40px rgba(232,216,176,0.22);
+}
+
+/* Emoji subtitle */
+.poem-subtitle {
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  line-height: 1;
+  letter-spacing: 0.1em;
+}
+
+/* Italic epigraph under the title */
+.poem-epigraph {
+  font-family: var(--serif);
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-style: italic;
+  color: rgba(245,241,232,0.38);
+  letter-spacing: 0.06em;
+  margin-top: 0.3rem;
 }
 
 /* ── Stanzas ──────────────────────────────────────────────── */
@@ -196,18 +220,6 @@ body {
 
 .poem-divider svg {
   width: min(280px, 78%);
-}
-
-/* ── Coda — "Fatima" name ─────────────────────────────────── */
-.poem-coda-name {
-  font-family: var(--script) !important;
-  font-size: clamp(2.8rem, 8vw, 4.5rem) !important;
-  font-style: normal !important;
-  color: var(--gold) !important;
-  letter-spacing: 0.04em;
-  line-height: 1.15 !important;
-  text-shadow: 0 0 35px rgba(232,216,176,0.22);
-  margin-top: 0.15rem;
 }
 
 /* ── PS block ─────────────────────────────────────────────── */
