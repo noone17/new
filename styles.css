@@ -159,16 +159,6 @@ body {
   letter-spacing: 0.1em;
 }
 
-/* Italic epigraph under the title */
-.poem-epigraph {
-  font-family: var(--serif);
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
-  font-style: italic;
-  color: rgba(245,241,232,0.38);
-  letter-spacing: 0.06em;
-  margin-top: 0.3rem;
-}
-
 /* ── Stanzas ──────────────────────────────────────────────── */
 .poem-stanza {
   display: flex;
@@ -208,6 +198,26 @@ body {
 .poem-line--quote {
   font-style: italic;
   letter-spacing: 0.04em;
+}
+
+/* Bold/emphasis lines */
+.poem-line--bold {
+  font-weight: 600 !important;
+  font-style: normal !important;
+  color: var(--ivory) !important;
+  font-size: clamp(1.05rem, 2.6vw, 1.36rem);
+  letter-spacing: 0.02em;
+}
+
+/* Combined bold + accent */
+.poem-line--accent.poem-line--bold {
+  color: rgba(232,216,176,0.92) !important;
+}
+
+/* Sparse list stanza — more breathing room between items */
+.poem-stanza--list {
+  gap: 0.9rem;
+  padding-left: clamp(1rem, 4vw, 2rem);
 }
 
 /* ── SVG dividers ─────────────────────────────────────────── */
