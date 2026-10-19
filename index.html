@@ -3,172 +3,355 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>To My Lady 🌸</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#f8eee9" />
+  <meta name="description" content="An illustrated love letter, written just for you." />
+  <title>My Shorty, My Tiny Devil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f8eee9;
+      --paper-deep: #f0ded6;
+      --ink: #442c35;
+      --muted: #896b72;
+      --wine: #762f4d;
+      --rose: #cc788b;
+      --pink: #e9a6b3;
+      --gold: #c69a56;
+      --line: rgba(118, 47, 77, .18);
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background-color: var(--paper);
+      background-image: radial-gradient(rgba(118, 47, 77, .055) .65px, transparent .65px);
+      background-size: 8px 8px;
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    button { font: inherit; }
+    .topbar {
+      position: absolute;
+      z-index: 4;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 26px clamp(22px, 6vw, 88px);
+    }
+    .wordmark, .top-link {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .wordmark { color: var(--wine); }
+    .top-link { color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 4px; }
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, .86fr);
+      align-items: center;
+      gap: clamp(34px, 7vw, 100px);
+      min-height: min(850px, 100svh);
+      padding: 112px clamp(26px, 10vw, 150px) 86px;
+      overflow: hidden;
+      background: linear-gradient(125deg, rgba(255, 250, 246, .75), rgba(244, 221, 219, .52));
+    }
+    .hero::before, .hero::after {
+      position: absolute;
+      content: "";
+      pointer-events: none;
+      border: 1px solid rgba(198, 154, 86, .26);
+      border-radius: 50%;
+    }
+    .hero::before { width: 450px; height: 450px; top: -260px; left: 38%; }
+    .hero::after { width: 620px; height: 620px; right: -390px; bottom: -420px; }
+    .hero-copy { position: relative; z-index: 1; max-width: 620px; animation: arrive .8s .1s both; }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 22px;
+      color: var(--wine);
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { width: 34px; height: 1px; background: var(--gold); content: ""; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 660px;
+      margin-bottom: 21px;
+      color: var(--wine);
+      font-family: var(--serif);
+      font-size: clamp(3.1rem, 7.4vw, 6.4rem);
+      font-weight: 400;
+      line-height: .99;
+    }
+    h1 em { color: var(--rose); font-weight: 400; }
+    .hero-intro { max-width: 390px; margin-bottom: 32px; color: var(--muted); font-size: .99rem; line-height: 1.8; }
+    .open-letter {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 51px;
+      padding: 0 22px;
+      border: 1px solid var(--wine);
+      border-radius: 2px;
+      background: var(--wine);
+      color: #fff9f5;
+      font-size: .76rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background .2s, transform .2s;
+    }
+    .open-letter:hover { transform: translateY(-2px); background: #5d223a; }
+    .open-letter span { color: #f3c8c5; font-size: 1.1rem; }
+    .byline { margin: 27px 0 0; color: var(--muted); font-family: var(--serif); font-size: 1rem; font-style: italic; }
+
+    .portrait-wrap { position: relative; z-index: 1; width: min(100%, 440px); justify-self: center; animation: arrive .9s .25s both; }
+    .portrait-frame {
+      position: relative;
+      display: grid;
+      place-items: center;
+      aspect-ratio: .82;
+      overflow: hidden;
+      border: 1px solid rgba(198, 154, 86, .62);
+      border-radius: 48% 48% 4px 4px;
+      background: linear-gradient(155deg, #efd4d0 0%, #e9b7bb 47%, #b96578 100%);
+      box-shadow: 16px 18px 0 rgba(118, 47, 77, .08);
+    }
+    .portrait-frame::before {
+      position: absolute;
+      inset: 13px;
+      border: 1px solid rgba(255, 250, 246, .65);
+      border-radius: 48% 48% 2px 2px;
+      content: "";
+    }
+    .sun-disc { position: absolute; top: 12%; right: 11%; width: 76px; aspect-ratio: 1; border-radius: 50%; background: rgba(255, 237, 205, .68); }
+    .hill { position: absolute; bottom: 0; width: 120%; height: 35%; border-radius: 50% 50% 0 0; background: #a34e68; }
+    .hill.back { bottom: 7%; left: -37%; height: 29%; background: #c9818c; }
+    .hero-figure { position: absolute; bottom: 4%; left: 50%; width: 66%; height: 78%; transform: translateX(-50%); }
+    .figure-hair { position: absolute; z-index: 1; top: 9%; left: 31%; width: 38%; height: 25%; border-radius: 48% 48% 40% 40%; background: #382730; }
+    .figure-face { position: absolute; z-index: 2; top: 12%; left: 36%; width: 29%; height: 20%; border-radius: 46% 46% 48% 48%; background: #b97566; }
+    .figure-neck { position: absolute; z-index: 1; top: 28%; left: 43%; width: 14%; height: 11%; background: #b97566; }
+    .figure-blouse { position: absolute; z-index: 2; top: 35%; left: 22%; width: 57%; height: 30%; border-radius: 35% 35% 12% 12%; background: #762f4d; }
+    .figure-sari {
+      position: absolute;
+      z-index: 3;
+      top: 32%;
+      left: 9%;
+      width: 82%;
+      height: 69%;
+      border: 2px solid rgba(245, 215, 155, .88);
+      background: repeating-linear-gradient(90deg, transparent 0 17px, rgba(255, 227, 189, .18) 18px 19px), linear-gradient(145deg, #e9a5b1, #c65f79 80%);
+      clip-path: polygon(29% 0, 71% 0, 100% 100%, 0 100%, 27% 57%, 35% 30%);
+    }
+    .sari-border { position: absolute; z-index: 4; top: 44%; left: 13%; width: 77%; height: 3px; transform: rotate(-18deg); background: #efd293; box-shadow: 0 4px rgba(239, 210, 147, .45); }
+    .earring { position: absolute; z-index: 4; top: 24%; left: 34%; width: 7px; height: 12px; border: 1px solid #f3d692; border-radius: 50%; }
+    .bangle { position: absolute; z-index: 4; right: 17%; bottom: 20%; width: 27px; height: 7px; border: 2px solid #f3d692; border-radius: 50%; transform: rotate(-24deg); }
+    .art-caption {
+      position: absolute;
+      right: -17px;
+      bottom: 33px;
+      padding: 12px 15px;
+      border: 1px solid rgba(198, 154, 86, .5);
+      background: var(--paper);
+      color: var(--wine);
+      font-family: var(--serif);
+      font-size: .96rem;
+      font-style: italic;
+      transform: rotate(-4deg);
+    }
+    .sprig { position: absolute; width: 62px; height: 100px; color: rgba(118, 47, 77, .62); }
+    .sprig::before { position: absolute; left: 30px; top: 8px; width: 1px; height: 88px; background: currentColor; content: ""; transform: rotate(27deg); }
+    .sprig i { position: absolute; width: 25px; height: 12px; border: 1px solid currentColor; border-radius: 100% 0 100% 0; transform: rotate(-26deg); }
+    .sprig i:nth-child(1) { top: 20px; left: 10px; }
+    .sprig i:nth-child(2) { top: 40px; left: 30px; transform: rotate(145deg); }
+    .sprig i:nth-child(3) { top: 57px; left: 4px; }
+    .sprig-one { top: 13%; left: 3%; transform: rotate(-25deg); }
+    .sprig-two { right: 2%; bottom: 8%; transform: rotate(35deg) scale(.8); }
+
+    .section-kicker { margin-bottom: 12px; color: var(--rose); font-size: .68rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
+    .section-title { margin-bottom: 16px; color: var(--wine); font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.7rem); font-weight: 400; line-height: 1.1; }
+    .poem-section { position: relative; padding: 105px 24px 116px; }
+    .poem-heading { max-width: 700px; margin: 0 auto 54px; text-align: center; }
+    .poem-heading .section-title { margin-bottom: 0; }
+    .stanzas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 66px; max-width: 860px; margin: 0 auto; }
+    .stanza {
+      position: relative;
+      padding: 25px 0 27px 28px;
+      border-top: 1px solid var(--line);
+      color: #583f47;
+      font-family: var(--serif);
+      font-size: clamp(1.03rem, 1.6vw, 1.22rem);
+      line-height: 1.88;
+      white-space: nowrap;
+    }
+    .stanza::before { position: absolute; top: 34px; left: 0; color: var(--rose); content: "✳"; font-family: var(--sans); font-size: .68rem; }
+    .stanza p { margin: 0; }
+    .stanza em { color: var(--wine); }
+    .stanza-sign { grid-column: 1 / -1; margin-top: 25px; color: var(--wine); font-family: var(--serif); font-size: 1.13rem; font-style: italic; text-align: center; }
+
+    .hug-section { padding: 102px 24px 115px; text-align: center; }
+    .hug-section .section-title { max-width: 580px; margin: 0 auto 16px; }
+    .hug-intro { max-width: 430px; margin: 0 auto 34px; color: var(--muted); font-size: .95rem; line-height: 1.8; }
+    .reveal-button {
+      min-height: 50px;
+      padding: 0 22px;
+      border: 1px solid var(--wine);
+      background: transparent;
+      color: var(--wine);
+      cursor: pointer;
+      font-size: .73rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      transition: color .2s, background .2s, transform .2s;
+    }
+    .reveal-button:hover { transform: translateY(-2px); background: var(--wine); color: white; }
+    .surprise { display: none; max-width: 680px; margin: 46px auto 0; animation: arrive .65s both; }
+    .surprise.is-open { display: block; }
+    .hug-illustration { position: relative; display: grid; place-items: center; width: 100%; max-width: 390px; height: 235px; margin: 0 auto 29px; overflow: hidden; background: linear-gradient(160deg, #f2d8d0, #edc2c3 65%, #dd9ba8); }
+    .hug-illustration::before { position: absolute; top: -70px; right: 22px; width: 160px; height: 160px; border: 1px solid rgba(118, 47, 77, .23); border-radius: 50%; content: ""; }
+    .hug-person { position: absolute; bottom: -27px; width: 130px; height: 150px; border-radius: 50% 50% 0 0; }
+    .hug-person.left { left: calc(50% - 119px); background: #762f4d; transform: rotate(-10deg); }
+    .hug-person.right { right: calc(50% - 119px); background: #c77586; transform: rotate(10deg); }
+    .hug-person::before { position: absolute; top: -45px; left: 34px; width: 61px; height: 66px; border-radius: 48%; background: #ae7062; content: ""; }
+    .hug-person.left::before { background: #382730; box-shadow: 9px 8px 0 5px #382730; }
+    .hug-person.right::before { background: #bd806d; box-shadow: -8px 7px 0 7px #35232b; }
+    .hug-arm { position: absolute; z-index: 2; top: 105px; left: calc(50% - 112px); width: 224px; height: 27px; border: 5px solid #d58f82; border-top: 0; border-radius: 0 0 60% 60%; transform: rotate(-2deg); }
+    .surprise-note { margin: 0 auto 17px; color: var(--wine); font-family: var(--serif); font-size: clamp(1.3rem, 3.2vw, 1.85rem); font-style: italic; line-height: 1.55; }
+    .surprise-sign { margin: 0; color: var(--muted); font-family: var(--serif); font-size: 1rem; }
+    footer { padding: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: .7rem; letter-spacing: .08em; text-align: center; text-transform: uppercase; }
+    footer span { color: var(--rose); }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @keyframes arrive { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 760px) {
+      .topbar { padding: 19px 21px; }
+      .hero { grid-template-columns: 1fr; gap: 44px; min-height: auto; padding: 125px 26px 70px; }
+      .hero-copy { max-width: 540px; }
+      h1 { font-size: clamp(3.25rem, 13vw, 5rem); }
+      .portrait-wrap { width: min(78%, 360px); }
+      .sprig-one { top: 41%; left: -2%; }
+      .sprig-two { right: -3%; bottom: 6%; }
+      .stanzas { grid-template-columns: 1fr; max-width: 440px; }
+      .stanza-sign { grid-column: auto; }
+      .poem-section { padding: 80px 24px 90px; }
+      .poem-heading { margin-bottom: 35px; }
+      .hug-section { padding: 80px 24px 90px; }
+    }
+    @media (max-width: 390px) {
+      .hero { padding-right: 21px; padding-left: 21px; }
+      .stanza { padding-left: 23px; font-size: .98rem; }
+      .art-caption { right: -9px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 <body>
+  <header class="topbar">
+    <a class="wordmark" href="#home" aria-label="A love letter">S + S</a>
+    <a class="top-link" href="#the-hug">A little surprise</a>
+  </header>
 
-  <!-- Floating hearts background -->
-  <div class="hearts-bg" id="hearts-bg" aria-hidden="true"></div>
-
-  <!-- Sealed letter screen -->
-  <div id="letter-scene" role="main" aria-label="Sealed letter">
-    <div class="envelope-wrap">
-      <p class="envelope-hint">A little something, just for you... 🌸</p>
-
-      <div class="envelope" id="envelope" role="button" aria-label="Open the letter" tabindex="0">
-        <div class="envelope-seal">💌</div>
+  <main>
+    <section class="hero" id="home" aria-labelledby="title">
+      <div class="hero-copy">
+        <h1 id="title">My Shorty,<br />My <em>Tiny Devil</em></h1>
+        <p class="hero-intro">For the girl in the pink saree, whose voice stayed with me long after we said goodbye.</p>
+        <a class="open-letter" href="#poem">Read my letter <span aria-hidden="true">↓</span></a>
       </div>
 
-      <p class="envelope-label">To My Lady &nbsp;🌸</p>
-
-      <button class="open-btn" id="open-btn" aria-label="Open the letter">
-        Open ✉️
-      </button>
-    </div>
-  </div>
-
-  <!-- Poem page (revealed after opening) -->
-  <main id="poem-page" aria-hidden="true">
-
-    <div class="petal-divider">🌸 🌸 🌸</div>
-    <h1 class="page-title">The Girl in the Pink Saree</h1>
-    <p class="page-subtitle">A poem written from heart, to yours.</p>
-    <div class="petal-divider">💗 💗 💗</div>
-
-    <article class="poem-card" aria-label="Poem">
-
-      <!-- Stanza 1 -->
-      <div class="stanza" data-delay="0">
-        <p>I saw you in an aisle, a stranger passing by,</p>
-        <p>Never thought you'd be the one who'd stay on my mind.</p>
-        <p>Found you on Instagram, and we started to speak,</p>
-        <p>Just one day of talking, yet there's something unique.</p>
+      <div class="portrait-wrap" role="img" aria-label="Illustration of a woman in a rose-pink saree with a gold bangle, against a warm evening sky">
+        <div class="sprig sprig-one" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="portrait-frame" aria-hidden="true">
+          <div class="sun-disc"></div><div class="hill back"></div><div class="hill"></div>
+          <div class="hero-figure"><div class="figure-hair"></div><div class="figure-face"></div><div class="figure-neck"></div><div class="figure-blouse"></div><div class="figure-sari"></div><div class="sari-border"></div><div class="earring"></div><div class="bangle"></div></div>
+        </div>
+        <div class="art-caption">that pink saree ✳</div>
+        <div class="sprig sprig-two" aria-hidden="true"><i></i><i></i><i></i></div>
       </div>
+    </section>
 
-      <div class="petal-divider" aria-hidden="true">🌸</div>
-
-      <!-- Stanza 2 -->
-      <div class="stanza" data-delay="150">
-        <p>I like the way you talk, so bold and so fierce,</p>
-        <p>A beautiful soul with a presence that captivates.</p>
-        <p>That <em>pink saree, white blouse</em> — you looked so divine,</p>
-        <p>That little nose pin? Girl, you should be a crime. 😉</p>
-        <p>Your neatly styled hair, that gorgeous face,</p>
-        <p>How am I supposed to forget you with such effortless grace? ❤️</p>
+    <section class="poem-section" id="poem" aria-labelledby="poem-title">
+      <div class="poem-heading reveal">
+        <p class="section-kicker">A moment I keep replaying</p>
+        <h2 class="section-title" id="poem-title">For you, Shorty</h2>
       </div>
-
-      <div class="petal-divider" aria-hidden="true">🌸</div>
-
-      <!-- Stanza 3 -->
-      <div class="stanza" data-delay="300">
-        <p>Maybe it's too soon, maybe it's just a spark,</p>
-        <p>But somehow, you've left a little glow in my heart.</p>
-        <p>I barely know you, yet I'd love to know more,</p>
-        <p>Meet you in person, not just through a screen anymore.</p>
+      <div class="stanzas">
+        <div class="stanza reveal"><p>My Shorty, my Tiny Devil,<br />My little Short Hitler,<br />So nice, so beautiful, so hot,<br />So strong, with extra sugar.</p></div>
+        <div class="stanza reveal"><p>Today you came in a pink saree,<br />Single pleat, with a gold bangle on your hand,<br />Rose-colored nails on your hands,<br />And beauty beyond compare.</p></div>
+        <div class="stanza reveal"><p>We’ve talked in messages and calls,<br />I’ve heard your beautiful voice,<br />I’ve heard you sing so nicely,<br />And still, I had no choice.</p></div>
+        <div class="stanza reveal"><p>When I met you today,<br />I just smiled through it all,<br />I don’t know why I love listening<br />To your blabbering.</p></div>
+        <div class="stanza reveal"><p>In that saree, you looked gorgeous,<br />I just said, “You look good,”<br />But inside, I had so much more.</p></div>
+        <div class="stanza reveal"><p>You looked so beautiful today,<br />More than my words could ever say,<br />I wish I told you everything<br />I felt when I saw you that way.</p></div>
+        <div class="stanza reveal"><p>Today, you gave me a hug.<br />It was a little moment,<br />But it made my whole day.</p></div>
+        <div class="stanza reveal"><p>I hope we can meet again soon —<br />And next time, maybe I can have one<br />That lasts a little longer.</p></div>
       </div>
+    </section>
 
-      <div class="petal-divider" aria-hidden="true">🌸</div>
-
-      <!-- Stanza 4 -->
-      <div class="stanza" data-delay="450">
-        <p>Maybe someday, beneath the evening sky,</p>
-        <p>We'll walk hand in hand, just you and I.</p>
-        <p>No promises, no pressure, just a moment to see,</p>
-        <p>If <em>the girl in the pink saree</em> might smile walking beside me. ❤️</p>
+    <section class="hug-section" id="the-hug" aria-labelledby="hug-title">
+      <p class="section-kicker reveal">One little moment, all day long</p>
+      <h2 class="section-title reveal" id="hug-title">That hug meant everything.</h2>
+      <p class="hug-intro reveal">I didn’t find all the right words today. So I saved one more little thing for you.</p>
+      <button class="reveal-button" id="surpriseButton" type="button" aria-expanded="false" aria-controls="surprise">Open your surprise <span aria-hidden="true">♥</span></button>
+      <div class="surprise" id="surprise" aria-live="polite">
+        <div class="hug-illustration" role="img" aria-label="A warm illustration of two people sharing a close hug"><div class="hug-person left"></div><div class="hug-person right"></div><div class="hug-arm"></div></div>
+        <p class="surprise-note">Next time, maybe I can have one that lasts a little longer.<br />Just you and me, close.</p>
+        <p class="surprise-sign">Until then, I’m keeping today’s hug with me. <span aria-hidden="true">❤️</span></p>
       </div>
-
-    </article>
-
-    <!-- Invitation -->
-    <div class="invitation-card" id="invitation">
-      <span class="invite-icon">🌸</span>
-      <p class="invite-question">"Can I hold your hand and take a walk with you someday?"</p>
-      <p class="invite-note">No rush, no pressure — just two people, an evening sky, and a quiet possibility.</p>
-    </div>
-
-    <p class="signature">— With quiet admiration 💗</p>
-
-    <p class="footer-note">Written for you, the girl in the pink saree 🌸</p>
-
+    </section>
   </main>
 
+  <footer>Made with a full heart <span aria-hidden="true">♥</span></footer>
+
   <script>
-    /* ── Floating hearts generator ── */
-    const heartSymbols = ['🌸', '💗', '💖', '🌷', '✨', '💕', '🌺'];
-    const bg = document.getElementById('hearts-bg');
+    const surpriseButton = document.getElementById('surpriseButton');
+    const surprise = document.getElementById('surprise');
 
-    function createHeart() {
-      const el = document.createElement('span');
-      el.className = 'heart-particle';
-      el.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
-      el.style.left = Math.random() * 100 + 'vw';
-      el.style.fontSize = (0.8 + Math.random() * 1.2) + 'rem';
-      const dur = 8 + Math.random() * 10;
-      el.style.animationDuration = dur + 's';
-      el.style.animationDelay = (Math.random() * dur) + 's';
-      bg.appendChild(el);
-      setTimeout(() => el.remove(), (dur + 3) * 1000);
-    }
-
-    // Spawn hearts continuously
-    for (let i = 0; i < 18; i++) setTimeout(createHeart, i * 600);
-    setInterval(createHeart, 900);
-
-    /* ── Open letter ── */
-    function openLetter() {
-      const scene    = document.getElementById('letter-scene');
-      const envelope = document.getElementById('envelope');
-      const page     = document.getElementById('poem-page');
-
-      envelope.classList.add('opened');
-
-      setTimeout(() => {
-        scene.classList.add('hidden');
-        page.setAttribute('aria-hidden', 'false');
-        page.classList.add('visible');
-        revealStanzas();
-      }, 700);
-    }
-
-    document.getElementById('open-btn').addEventListener('click', openLetter);
-    document.getElementById('envelope').addEventListener('click', openLetter);
-    document.getElementById('envelope').addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLetter(); }
+    surpriseButton.addEventListener('click', () => {
+      const isOpen = surpriseButton.getAttribute('aria-expanded') === 'true';
+      surpriseButton.setAttribute('aria-expanded', String(!isOpen));
+      surprise.classList.toggle('is-open', !isOpen);
+      surpriseButton.firstChild.textContent = isOpen ? 'Open your surprise ' : 'Keep this moment ';
+      if (!isOpen) surprise.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
 
-    /* ── Stanza scroll reveal ── */
-    function revealStanzas() {
-      const stanzas    = document.querySelectorAll('.stanza');
-      const invitation = document.getElementById('invitation');
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+    const revealItems = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver((entries, currentObserver) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const delay = parseInt(entry.target.dataset.delay || 0, 10);
-            setTimeout(() => entry.target.classList.add('revealed'), delay);
-            observer.unobserve(entry.target);
+            entry.target.classList.add('visible');
+            currentObserver.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.15 });
-
-      stanzas.forEach(s => observer.observe(s));
-
-      const invObs = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setTimeout(() => entry.target.classList.add('revealed'), 200);
-            invObs.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.2 });
-      invObs.observe(invitation);
-
-      // Immediately reveal first stanza since it's already in view
-      setTimeout(() => {
-        stanzas[0] && stanzas[0].classList.add('revealed');
-      }, 300);
+      }, { threshold: 0.12 });
+      revealItems.forEach((item) => observer.observe(item));
+    } else {
+      revealItems.forEach((item) => item.classList.add('visible'));
     }
   </script>
 </body>
