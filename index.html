@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#f8eee9" />
-  <meta name="description" content="An illustrated love letter, written just for you." />
-  <title>My Shorty, My Tiny Devil</title>
+  <meta name="description" content="A little love letter for Shakthi, inspired by one unforgettable Onam day." />
+  <title>My Onam Dream</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
@@ -160,7 +160,7 @@
       width: 82%;
       height: 69%;
       border: 2px solid rgba(245, 215, 155, .88);
-      background: repeating-linear-gradient(90deg, transparent 0 17px, rgba(255, 227, 189, .18) 18px 19px), linear-gradient(145deg, #e9a5b1, #c65f79 80%);
+      background: repeating-linear-gradient(90deg, transparent 0 17px, rgba(198, 154, 86, .26) 18px 19px), linear-gradient(145deg, #fffaf1, #ead9b7 80%);
       clip-path: polygon(29% 0, 71% 0, 100% 100%, 0 100%, 27% 57%, 35% 30%);
     }
     .sari-border { position: absolute; z-index: 4; top: 44%; left: 13%; width: 77%; height: 3px; transform: rotate(-18deg); background: #efd293; box-shadow: 0 4px rgba(239, 210, 147, .45); }
@@ -202,16 +202,15 @@
       font-family: var(--serif);
       font-size: clamp(1.03rem, 1.6vw, 1.22rem);
       line-height: 1.88;
-      white-space: nowrap;
     }
     .stanza::before { position: absolute; top: 34px; left: 0; color: var(--rose); content: "✳"; font-family: var(--sans); font-size: .68rem; }
     .stanza p { margin: 0; }
     .stanza em { color: var(--wine); }
     .stanza-sign { grid-column: 1 / -1; margin-top: 25px; color: var(--wine); font-family: var(--serif); font-size: 1.13rem; font-style: italic; text-align: center; }
 
-    .hug-section { padding: 102px 24px 115px; text-align: center; }
-    .hug-section .section-title { max-width: 580px; margin: 0 auto 16px; }
-    .hug-intro { max-width: 430px; margin: 0 auto 34px; color: var(--muted); font-size: .95rem; line-height: 1.8; }
+    .note-section { padding: 102px 24px 115px; text-align: center; }
+    .note-section .section-title { max-width: 580px; margin: 0 auto 16px; }
+    .note-intro { max-width: 430px; margin: 0 auto 34px; color: var(--muted); font-size: .95rem; line-height: 1.8; }
     .reveal-button {
       min-height: 50px;
       padding: 0 22px;
@@ -228,15 +227,6 @@
     .reveal-button:hover { transform: translateY(-2px); background: var(--wine); color: white; }
     .surprise { display: none; max-width: 680px; margin: 46px auto 0; animation: arrive .65s both; }
     .surprise.is-open { display: block; }
-    .hug-illustration { position: relative; display: grid; place-items: center; width: 100%; max-width: 390px; height: 235px; margin: 0 auto 29px; overflow: hidden; background: linear-gradient(160deg, #f2d8d0, #edc2c3 65%, #dd9ba8); }
-    .hug-illustration::before { position: absolute; top: -70px; right: 22px; width: 160px; height: 160px; border: 1px solid rgba(118, 47, 77, .23); border-radius: 50%; content: ""; }
-    .hug-person { position: absolute; bottom: -27px; width: 130px; height: 150px; border-radius: 50% 50% 0 0; }
-    .hug-person.left { left: calc(50% - 119px); background: #762f4d; transform: rotate(-10deg); }
-    .hug-person.right { right: calc(50% - 119px); background: #c77586; transform: rotate(10deg); }
-    .hug-person::before { position: absolute; top: -45px; left: 34px; width: 61px; height: 66px; border-radius: 48%; background: #ae7062; content: ""; }
-    .hug-person.left::before { background: #382730; box-shadow: 9px 8px 0 5px #382730; }
-    .hug-person.right::before { background: #bd806d; box-shadow: -8px 7px 0 7px #35232b; }
-    .hug-arm { position: absolute; z-index: 2; top: 105px; left: calc(50% - 112px); width: 224px; height: 27px; border: 5px solid #d58f82; border-top: 0; border-radius: 0 0 60% 60%; transform: rotate(-2deg); }
     .surprise-note { margin: 0 auto 17px; color: var(--wine); font-family: var(--serif); font-size: clamp(1.3rem, 3.2vw, 1.85rem); font-style: italic; line-height: 1.55; }
     .surprise-sign { margin: 0; color: var(--muted); font-family: var(--serif); font-size: 1rem; }
     footer { padding: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: .7rem; letter-spacing: .08em; text-align: center; text-transform: uppercase; }
@@ -257,7 +247,7 @@
       .stanza-sign { grid-column: auto; }
       .poem-section { padding: 80px 24px 90px; }
       .poem-heading { margin-bottom: 35px; }
-      .hug-section { padding: 80px 24px 90px; }
+      .note-section { padding: 80px 24px 90px; }
     }
     @media (max-width: 390px) {
       .hero { padding-right: 21px; padding-left: 21px; }
@@ -273,54 +263,53 @@
 <body>
   <header class="topbar">
     <a class="wordmark" href="#home" aria-label="A love letter">S + S</a>
-    <a class="top-link" href="#the-hug">A little surprise</a>
+    <a class="top-link" href="#one-last-thing">One last thing</a>
   </header>
 
   <main>
     <section class="hero" id="home" aria-labelledby="title">
       <div class="hero-copy">
-        <h1 id="title">My Shorty,<br />My <em>Tiny Devil</em></h1>
-        <p class="hero-intro">For the girl in the pink saree, whose voice stayed with me long after we said goodbye.</p>
+        <h1 id="title">My Onam<br /><em>Dream</em></h1>
+        <p class="hero-intro">One little Instagram chat, one day of talking—and somehow, you made my ordinary day feel different.</p>
         <a class="open-letter" href="#poem">Read my letter <span aria-hidden="true">↓</span></a>
       </div>
 
-      <div class="portrait-wrap" role="img" aria-label="Illustration of a woman in a rose-pink saree with a gold bangle, against a warm evening sky">
+      <div class="portrait-wrap" role="img" aria-label="Illustration of a woman in an ivory Onam saree with gold details, against a warm evening sky">
         <div class="sprig sprig-one" aria-hidden="true"><i></i><i></i><i></i></div>
         <div class="portrait-frame" aria-hidden="true">
           <div class="sun-disc"></div><div class="hill back"></div><div class="hill"></div>
           <div class="hero-figure"><div class="figure-hair"></div><div class="figure-face"></div><div class="figure-neck"></div><div class="figure-blouse"></div><div class="figure-sari"></div><div class="sari-border"></div><div class="earring"></div><div class="bangle"></div></div>
         </div>
-        <div class="art-caption">that pink saree ✳</div>
+        <div class="art-caption">your Onam white ✳</div>
         <div class="sprig sprig-two" aria-hidden="true"><i></i><i></i><i></i></div>
       </div>
     </section>
 
     <section class="poem-section" id="poem" aria-labelledby="poem-title">
       <div class="poem-heading reveal">
-        <p class="section-kicker">A moment I keep replaying</p>
-        <h2 class="section-title" id="poem-title">For you, Shorty</h2>
+        <p class="section-kicker">A little note from the heart</p>
+        <h2 class="section-title" id="poem-title">For you, Shakthi</h2>
       </div>
       <div class="stanzas">
-        <div class="stanza reveal"><p>My Shorty, my Tiny Devil,<br />My little Short Hitler,<br />So nice, so beautiful, so hot,<br />So strong, with extra sugar.</p></div>
-        <div class="stanza reveal"><p>Today you came in a pink saree,<br />Single pleat, with a gold bangle on your hand,<br />Rose-colored nails on your hands,<br />And beauty beyond compare.</p></div>
-        <div class="stanza reveal"><p>We’ve talked in messages and calls,<br />I’ve heard your beautiful voice,<br />I’ve heard you sing so nicely,<br />And still, I had no choice.</p></div>
-        <div class="stanza reveal"><p>When I met you today,<br />I just smiled through it all,<br />I don’t know why I love listening<br />To your blabbering.</p></div>
-        <div class="stanza reveal"><p>In that saree, you looked gorgeous,<br />I just said, “You look good,”<br />But inside, I had so much more.</p></div>
-        <div class="stanza reveal"><p>You looked so beautiful today,<br />More than my words could ever say,<br />I wish I told you everything<br />I felt when I saw you that way.</p></div>
-        <div class="stanza reveal"><p>Today, you gave me a hug.<br />It was a little moment,<br />But it made my whole day.</p></div>
-        <div class="stanza reveal"><p>I hope we can meet again soon —<br />And next time, maybe I can have one<br />That lasts a little longer.</p></div>
+        <div class="stanza reveal"><p>The world was ordinary until you came,<br />A little Instagram chat, a beautiful name.<br />Just one day of talking, yet somehow I knew,<br />There was something different about you.</p></div>
+        <div class="stanza reveal"><p>And then I saw you in that Onam white,<br />Like a little piece of heaven dressed in light.<br />That saree, that smile, that beautiful view,<br />For a moment, the world forgot everything but you.</p></div>
+        <div class="stanza reveal"><p>Those rose-petal lips, that playful glow,<br />Those bubbly cheeks that steal the show.<br />You looked so lovely, so effortlessly sweet,<br />Like a dream my heart never expected to meet.</p></div>
+        <div class="stanza reveal"><p>I know it's only been a day<br />And I don't know everything about you.<br />I haven't heard all the stories you hold,<br />Or the little secrets your heart hasn't told.</p></div>
+        <div class="stanza reveal"><p>But sometimes, feelings don't wait for time,<br />They arrive like a song, like a beautiful rhyme.<br />And somewhere between your laughter and smile,<br />You made my ordinary day worthwhile.</p></div>
+        <div class="stanza reveal"><p>So I asked you a question, a little afraid,<br />Hoping my feelings wouldn't leave you dismayed.<br />“Shakthi, will you be my girl?” I said,<br />With a thousand little butterflies inside my head.</p></div>
+        <div class="stanza reveal"><p>And if you say yes, I'll smile at my phone,<br />No longer a stranger, no longer alone.<br />But even if your heart takes its own sweet time,<br />I'll be glad I met you, my unexpected rhyme.</p></div>
+        <div class="stanza reveal"><p>Because before I knew you, you were just a name,<br />Now even that name doesn't feel quite the same.<br />Shakthi, my pretty little Onam dream,<br />You've become the sweetest thought in my daydream. <span aria-hidden="true">🤍🌸</span></p></div>
       </div>
     </section>
 
-    <section class="hug-section" id="the-hug" aria-labelledby="hug-title">
-      <p class="section-kicker reveal">One little moment, all day long</p>
-      <h2 class="section-title reveal" id="hug-title">That hug meant everything.</h2>
-      <p class="hug-intro reveal">I didn’t find all the right words today. So I saved one more little thing for you.</p>
-      <button class="reveal-button" id="surpriseButton" type="button" aria-expanded="false" aria-controls="surprise">Open your surprise <span aria-hidden="true">♥</span></button>
+    <section class="note-section" id="one-last-thing" aria-labelledby="note-title">
+      <p class="section-kicker reveal">No pressure, just honesty</p>
+      <h2 class="section-title reveal" id="note-title">Take all the time you need.</h2>
+      <p class="note-intro reveal">I know we've only just met. Whatever your answer, I'm really glad our paths crossed.</p>
+      <button class="reveal-button" id="surpriseButton" type="button" aria-expanded="false" aria-controls="surprise">One last thing <span aria-hidden="true">♥</span></button>
       <div class="surprise" id="surprise" aria-live="polite">
-        <div class="hug-illustration" role="img" aria-label="A warm illustration of two people sharing a close hug"><div class="hug-person left"></div><div class="hug-person right"></div><div class="hug-arm"></div></div>
-        <p class="surprise-note">Next time, maybe I can have one that lasts a little longer.<br />Just you and me, close.</p>
-        <p class="surprise-sign">Until then, I’m keeping today’s hug with me. <span aria-hidden="true">❤️</span></p>
+        <p class="surprise-note">If your answer is yes, I'll be smiling at my phone.<br />If you need time, that's okay too.</p>
+        <p class="surprise-sign">I love you, Shakthi. ❤️ I don't know where this will lead, but I'd love to get to know you, make you smile, and see if we can create something beautiful together. 💗</p>
       </div>
     </section>
   </main>
@@ -335,7 +324,7 @@
       const isOpen = surpriseButton.getAttribute('aria-expanded') === 'true';
       surpriseButton.setAttribute('aria-expanded', String(!isOpen));
       surprise.classList.toggle('is-open', !isOpen);
-      surpriseButton.firstChild.textContent = isOpen ? 'Open your surprise ' : 'Keep this moment ';
+      surpriseButton.firstChild.textContent = isOpen ? 'One last thing ' : 'Keep this note ';
       if (!isOpen) surprise.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
 
