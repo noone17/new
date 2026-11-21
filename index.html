@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#071321">
-<title>Somewhere Between the Stars — for Leshna</title>
+<title>A Royal Letter for Her Majesty Leshna</title>
 <style>
 :root{--ink:#071321;--sea:#0b2638;--foam:#dce9e8;--rose:#f2b7c8;--gold:#e7d6a9;--dim:#a9bbc6}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--ink);color:var(--foam);font-family:Georgia,serif;overflow-x:hidden}
@@ -25,16 +25,23 @@ header{display:flex;justify-content:space-between;align-items:center;padding:22p
 .scroll{position:absolute;bottom:26px;font:9px Arial,sans-serif;letter-spacing:.24em;color:#8299a5}
 section{padding:90px 0}.center{text-align:center}.sub{color:var(--gold);font:10px Arial,sans-serif;letter-spacing:.27em;text-transform:uppercase}
 h2{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:400;margin:13px 0 15px}.intro{max-width:590px;margin:0 auto 38px;color:var(--dim);line-height:1.8}
-.bottle-stage{min-height:370px;display:grid;place-items:center;position:relative}
-.bottle{width:120px;height:220px;position:relative;transform:rotate(8deg);filter:drop-shadow(0 15px 25px #0008);animation:drift 4s ease-in-out infinite}
-@keyframes drift{50%{transform:translate(7px,-13px) rotate(2deg)}}
-.bottle-neck{position:absolute;top:0;left:44px;width:32px;height:45px;border:2px solid #c3e0df88;border-bottom:0;border-radius:8px 8px 0 0;background:#a8d2d322}
-.bottle-body{position:absolute;top:35px;left:10px;width:100px;height:174px;border:2px solid #c3e0df99;border-radius:28px 28px 36px 36px;background:linear-gradient(110deg,#c5eeee35,#8db9c31c 45%,#e5ffff20);box-shadow:inset 7px 0 15px #fff2,inset -7px 0 15px #fff1}
-.cork{position:absolute;top:-8px;left:45px;width:30px;height:18px;background:#b28d68;border-radius:5px;z-index:2}
-.paper{position:absolute;left:29px;top:91px;width:63px;height:68px;background:#f2e8d2;color:#5b4b40;font-size:8px;line-height:1.4;text-align:center;padding:14px 5px;transform:rotate(-8deg);box-shadow:0 3px 8px #0004}
+
+
+.bird-stage{min-height:380px;display:grid;place-items:center;position:relative;cursor:pointer;outline:none}
+.bird-stage:focus-visible{outline:2px solid #e7d6a9;outline-offset:8px;border-radius:20px}
+#doveCanvas{display:block;width:100%;max-width:520px;height:360px;touch-action:manipulation}
+.tap{margin-top:15px;color:var(--rose);font:11px Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase}
+/* kept for reduced-motion fallback only */
+@media(prefers-reduced-motion:reduce){#doveCanvas{display:none}.bird-fallback{display:block!important}}
+.letter{max-width:690px;margin:30px auto 0;background:linear-gradient(135deg,#f7eedb,#e9d9b8);color:#30271e;padding:clamp(28px,6vw,58px);border:1px solid #c5a875;box-shadow:0 22px 65px #0008,0 0 0 7px #e7d6a912;position:relative;transform:rotate(-.35deg)}
+.letter:before{content:"";position:absolute;inset:10px;border:1px double #a88b5e88;pointer-events:none}
+.royal-top{text-align:center;color:#a27a42;font:10px Arial,sans-serif;letter-spacing:.24em;margin:3px 0 26px}
+.letter .to{font-size:16px;color:#8b4e4e;font-style:italic;margin-bottom:10px}
+.letter .sign{color:#8b4e4e;line-height:1.8}
+.seal{position:absolute;right:30px;bottom:25px;width:43px;height:43px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#b64b50,#742d39);color:#f3dfb8;border:2px solid #d7b77b;box-shadow:0 3px 8px #0003;font-size:14px}
 .tap{margin-top:15px;color:var(--rose);font:11px Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase}
 .letter{max-width:690px;margin:30px auto 0;background:linear-gradient(135deg,#f3e9d5,#e8dcc3);color:#26313a;padding:clamp(28px,6vw,58px);border-radius:3px;box-shadow:0 22px 65px #0007;position:relative;transform:rotate(-.5deg)}
-.letter:before{content:"";position:absolute;inset:9px;border:1px solid #9e8c704f;pointer-events:none}
+.letter:before{content:"";position:absolute;inset:10px;border:1px double #a88b5e88;pointer-events:none}
 .letter .to{font-size:13px;color:#8b6c67;font-style:italic}
 .poem{white-space:pre-line;text-align:center;line-height:1.9;font-size:clamp(.98rem,2vw,1.12rem);margin:25px 0}
 .poem strong{color:#a34e6c;font-weight:400;font-style:italic}
@@ -51,27 +58,37 @@ h2{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:400;margin:13px 0 15px}.intro{
 footer{text-align:center;padding:35px 10px 50px;color:#718996;font:9px Arial,sans-serif;letter-spacing:.2em}
 .fade{opacity:0;transform:translateY(22px);transition:.8s}.fade.show{opacity:1;transform:none}
 .heart{position:fixed;bottom:-20px;z-index:5;pointer-events:none;color:var(--rose);animation:rise 5s linear forwards}@keyframes rise{to{transform:translateY(-110vh) rotate(45deg);opacity:0}}
-@media(max-width:600px){section{padding:68px 0}.hero{min-height:83vh}.bottle-stage{min-height:310px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:600px){section{padding:68px 0}.hero{min-height:83vh}.bird-stage{min-height:300px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}#doveCanvas{display:none!important}.bird-fallback{display:block!important}}
 </style>
 </head>
 <body>
 <div class="ocean"></div><div id="stars"></div>
-<header class="wrap"><span>✦ A NOTE THAT FOUND THE SEA</span><button class="sound" id="sound">♫ Soft sound: off</button></header>
+<header class="wrap"><span>✦ A ROYAL MESSAGE FOR HER MAJESTY</span><button class="sound" id="sound">♫ Soft sound: off</button></header>
 <main>
 <section class="hero wrap">
- <div class="fade show"><div class="kicker">A tiny message, carried by the tide</div><h1>Somewhere<br>between the <em>stars</em><br>and the sea.</h1><p>I wasn't looking for a story that day. Then I came across you, Leshna — and suddenly, I wanted to know the person behind that lovely smile.</p><button class="btn" onclick="document.getElementById('bottle').scrollIntoView({behavior:'smooth'})">There’s a message for you ↓</button></div>
+ <div class="fade show"><div class="kicker">A royal invitation, delivered with affection</div><h1>To Her<br>Majesty <em>Leshna</em></h1><p>In a world full of passing faces, yours made me pause. So I have sent a little messenger across the moonlit skies, carrying words written especially for you.</p><button class="btn" onclick="document.getElementById('bird').scrollIntoView({behavior:'smooth'})">召 Receive your royal letter ↓</button></div>
  <div class="scroll">SCROLL WHEN YOU’RE READY</div>
 </section>
-<section id="bottle">
- <div class="wrap center fade"><div class="sub">A message in a bottle</div><h2>It travelled all this way for you.</h2><p class="intro">Some thoughts are easier to send with the ocean. Tap the little bottle and see what it brought.</p>
- <div class="bottle-stage" id="openBottle" role="button" tabindex="0" aria-label="Open the message in a bottle">
-  <div class="bottle"><div class="cork"></div><div class="bottle-neck"></div><div class="bottle-body"></div><div class="paper">A little<br>note for<br>Leshna ♡</div></div>
- </div><div class="tap" id="tapText">✧ Tap the bottle to open ✧</div></div>
+<section id="bird">
+ <div class="wrap center fade"><div class="sub">A royal messenger has arrived</div><h2>A little bird has brought you something.</h2><p class="intro">From a faraway kingdom, a feathered messenger has flown through the night with a letter sealed just for you. Tap the bird to receive it.</p>
+ <div class="bird-stage" id="openBird" role="button" tabindex="0" aria-label="Receive the royal letter from the flying messenger bird">
+  <canvas id="doveCanvas" aria-hidden="true"></canvas>
+  <!-- reduced-motion / no-JS fallback -->
+  <svg class="bird-fallback" style="display:none;width:min(300px,80vw)" viewBox="0 0 340 250" aria-label="A dove carrying a royal letter">
+    <ellipse cx="163" cy="211" rx="76" ry="9" fill="#000" opacity=".2"/>
+    <path d="M137 116 C105 82 85 45 35 25 C56 65 54 91 79 119 C53 105 34 101 13 103 C50 139 82 151 137 148Z" fill="#bda681" stroke="#f5e6c8" stroke-width="2"/>
+    <path d="M82 145 C103 105 161 96 217 119 C239 128 250 147 235 165 C214 191 152 191 111 172 C91 164 77 157 82 145Z" fill="#fff4d9" stroke="#f5e6c8" stroke-width="2"/>
+    <path d="M145 137 C122 102 105 62 119 17 C149 39 169 62 175 91 C182 60 201 36 229 19 C233 67 220 103 190 139Z" fill="#fff0d2" stroke="#fff0d2" stroke-width="2"/>
+    <path d="M204 132 C211 105 231 86 256 88 C280 90 292 109 285 128 C278 147 252 153 230 146Z" fill="#fff4d9" stroke="#f5e6c8" stroke-width="2"/>
+    <circle cx="265" cy="108" r="4" fill="#29231d"/><circle cx="266" cy="107" r="1.2" fill="#fff"/>
+    <g transform="rotate(7 170 187)"><path d="M145 170 L195 170 L195 207 L145 207Z" fill="#f3e6ca" stroke="#9e805d" stroke-width="2"/><path d="M146 171 L170 190 L194 171" fill="none" stroke="#b99a70" stroke-width="2"/><circle cx="171" cy="191" r="7" fill="#9b3946" stroke="#e7c98e" stroke-width="2"/></g>
+  </svg>
+ </div><div class="tap" id="tapText">✧ Tap the messenger bird ✧</div></div>
 </section>
 <section id="note">
- <div class="wrap fade"><div class="center"><div class="sub">Unfolded, just for you</div><h2>A note from me</h2><p class="intro">A little honesty, wrapped in a few lines.</p></div>
- <article class="letter"><div class="to">For Leshna,</div>
+ <div class="wrap fade"><div class="center"><div class="sub">By royal decree… of my heart</div><h2>A letter for the queen</h2><p class="intro">Written by candlelight, sealed with care, and addressed to the loveliest queen I have yet to meet.</p></div>
+ <article class="letter"><div class="royal-top">✦ BY THE LIGHT OF THE MOON ✦</div><div class="to">To Her Majesty, Queen Leshna,</div>
  <div class="poem">It began with a glance on Aisle, a moment passing by,
 Then curiosity got the better of me, so I went looking for your smile.
 I found you on Instagram, and took a chance to say hello,
@@ -95,7 +112,7 @@ Just one lovely evening, and a chance to know your heart.
 <strong>So, Leshna, here's the question I've been wanting to ask…</strong>
 
 <strong>Would you let me take you on a date? ❤️</strong></div>
- <div class="sign">— Someone hoping to make you smile</div></article>
+ <div class="sign">With admiration and a hopeful heart,<br>Your humble admirer</div><div class="seal">✦ L ✦</div></article>
  </div>
 </section>
 <section id="little-date">
@@ -110,12 +127,12 @@ Just one lovely evening, and a chance to know your heart.
  </div>
 </section>
 </main>
-<footer>MADE WITH COURAGE, CURIOSITY & A LITTLE BIT OF MOONLIGHT · ♥</footer>
+<footer>SEALED WITH ADMIRATION · DELIVERED BY A LITTLE MESSENGER · ♥</footer>
 <script>
 const stars=document.getElementById('stars');for(let i=0;i<115;i++){let s=document.createElement('i');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDelay=Math.random()*4+'s';s.style.opacity=.2+Math.random()*.7;stars.appendChild(s)}
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.fade:not(.show)').forEach(x=>io.observe(x));
-let opened=false;function openNote(){if(opened)return;opened=true;document.getElementById('tapText').textContent='✧ The message is yours ✧';document.getElementById('note').scrollIntoView({behavior:'smooth'});sprinkle(12)}
-document.getElementById('openBottle').addEventListener('click',openNote);document.getElementById('openBottle').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openNote()}});
+let opened=false;function openNote(){if(opened)return;opened=true;document.getElementById('tapText').textContent='✧ The royal letter is yours ✧';document.getElementById('note').scrollIntoView({behavior:'smooth'});sprinkle(18)}
+document.getElementById('openBird').addEventListener('click',openNote);document.getElementById('openBird').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openNote()}});
 const plans={movie:['🎬 The movie','Two tickets, a big popcorn, and me trying not to look at you more than the screen.'],drive:['🌃 The night drive','Your favourite songs, city lights sliding by, and a conversation neither of us wants to end.'],beach:['🌊 The beach','Barefoot by the water, moonlight on the waves, and a slow walk with your hand in mine — if you want.']};
 document.querySelectorAll('[data-plan]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-plan]').forEach(x=>x.classList.remove('active'));b.classList.add('active');let p=plans[b.dataset.plan];document.getElementById('plan').innerHTML='<b>'+p[0]+'</b>'+p[1]}));
 function sprinkle(n){for(let i=0;i<n;i++){let h=document.createElement('span');h.className='heart';h.textContent=['♡','♥','✦'][i%3];h.style.left=Math.random()*100+'vw';h.style.fontSize=(15+Math.random()*18)+'px';h.style.animationDuration=(3+Math.random()*3)+'s';document.body.appendChild(h);setTimeout(()=>h.remove(),6500)}}
@@ -124,4 +141,528 @@ document.getElementById('think').onclick=()=>{document.getElementById('reply').t
 // Original gentle ambient pad, activated only by the visitor.
 let ctx,gain,active=false;document.getElementById('sound').onclick=async()=>{if(!ctx){ctx=new(window.AudioContext||window.webkitAudioContext)();gain=ctx.createGain();gain.gain.value=0;gain.connect(ctx.destination);[174.61,220,261.63].forEach((f,i)=>{let o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=f;g.gain.value=[.2,.12,.07][i];o.connect(g);g.connect(gain);o.start()})}if(ctx.state==='suspended')await ctx.resume();active=!active;gain.gain.setTargetAtTime(active?.025:0,ctx.currentTime,.8);document.getElementById('sound').textContent=active?'♫ Soft sound: on':'♫ Soft sound: off'};
 </script>
-</body></html>
+
+<!-- Three.js r165 (ES module CDN) + GSAP for the cinematic dove -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js",
+    "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import gsap from 'gsap';
+
+/* ─────────────────────────────────────────
+   ROYAL MESSENGER DOVE  –  Three.js r165
+   Cinematic procedural bird, no external assets.
+   Replaces the SVG bird; click logic preserved.
+───────────────────────────────────────── */
+
+const canvas  = document.getElementById('doveCanvas');
+const stage   = document.getElementById('openBird');
+if (!canvas || !stage) throw new Error('dove canvas not found');
+
+// ── Renderer ──────────────────────────────
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.setClearColor(0x000000, 0);
+
+// ── Scene & Camera ────────────────────────
+const scene  = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(42, 1, 0.01, 200);
+camera.position.set(0, 0, 7);
+
+// ── Resize ────────────────────────────────
+function resize() {
+  const W = stage.clientWidth  || 400;
+  const H = Math.min(W * 0.72, 360);
+  canvas.style.height = H + 'px';
+  renderer.setSize(W, H, false);
+  camera.aspect = W / H;
+  camera.updateProjectionMatrix();
+}
+resize();
+window.addEventListener('resize', resize);
+
+// ── Lighting ──────────────────────────────
+const ambient = new THREE.AmbientLight(0xfff8e7, 0.55);
+scene.add(ambient);
+
+const moon = new THREE.DirectionalLight(0xe8dfc8, 2.2);
+moon.position.set(3, 6, 5);
+moon.castShadow = true;
+scene.add(moon);
+
+const rimLight = new THREE.DirectionalLight(0xb8d8ff, 0.9);
+rimLight.position.set(-4, 2, -3);
+scene.add(rimLight);
+
+const fillLight = new THREE.PointLight(0xf2b7c8, 0.6, 20);
+fillLight.position.set(0, -2, 4);
+scene.add(fillLight);
+
+// ── Moon glow sprite ──────────────────────
+(function buildMoon() {
+  const geom = new THREE.CircleGeometry(1.4, 32);
+  const mat  = new THREE.MeshBasicMaterial({
+    color: 0xfff8e0, transparent: true, opacity: 0.18, side: THREE.DoubleSide
+  });
+  const disk = new THREE.Mesh(geom, mat);
+  disk.position.set(2.2, 1.6, -6);
+  scene.add(disk);
+
+  // halo ring
+  const haloGeom = new THREE.RingGeometry(1.5, 2.6, 48);
+  const haloMat  = new THREE.MeshBasicMaterial({
+    color: 0xfff3c0, transparent: true, opacity: 0.07,
+    side: THREE.DoubleSide
+  });
+  const halo = new THREE.Mesh(haloGeom, haloMat);
+  halo.position.copy(disk.position);
+  scene.add(halo);
+})();
+
+// ── Materials ─────────────────────────────
+const bodyMat = new THREE.MeshStandardMaterial({
+  color: 0xfaf3e0, roughness: 0.55, metalness: 0.0,
+  envMapIntensity: 0.4
+});
+const wingMat = new THREE.MeshStandardMaterial({
+  color: 0xfef9ec, roughness: 0.45, metalness: 0.0,
+  side: THREE.DoubleSide, transparent: true, opacity: 0.97
+});
+const wingTipMat = new THREE.MeshStandardMaterial({
+  color: 0xd4c49e, roughness: 0.6, metalness: 0.0,
+  side: THREE.DoubleSide, transparent: true, opacity: 0.92
+});
+const headMat = new THREE.MeshStandardMaterial({
+  color: 0xfaf3e0, roughness: 0.5, metalness: 0.0
+});
+const beakMat = new THREE.MeshStandardMaterial({ color: 0xd4a060, roughness: 0.5 });
+const eyeMat  = new THREE.MeshStandardMaterial({ color: 0x1a1008, roughness: 0.3 });
+const eyeShine= new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.1, emissive: 0xffffff, emissiveIntensity: 0.4 });
+const tailMat = new THREE.MeshStandardMaterial({
+  color: 0xf0e8d0, roughness: 0.5, side: THREE.DoubleSide, transparent: true, opacity: 0.95
+});
+const parchMat = new THREE.MeshStandardMaterial({
+  color: 0xf3e6ca, roughness: 0.8, metalness: 0.0, side: THREE.DoubleSide
+});
+const sealMat = new THREE.MeshStandardMaterial({
+  color: 0x9b2a3c, roughness: 0.4, metalness: 0.15,
+  emissive: 0x5a0010, emissiveIntensity: 0.15
+});
+const ribbonMat = new THREE.MeshStandardMaterial({
+  color: 0xd4976a, roughness: 0.6, side: THREE.DoubleSide
+});
+
+// ── Build dove hierarchy ──────────────────
+const dove = new THREE.Group();
+scene.add(dove);
+
+// — Body (elongated ellipsoid) —
+const bodyGeom = new THREE.SphereGeometry(0.42, 20, 14);
+bodyGeom.scale(1.0, 0.72, 0.68);
+const body = new THREE.Mesh(bodyGeom, bodyMat);
+body.castShadow = true;
+dove.add(body);
+
+// — Breast bulge —
+const breastGeom = new THREE.SphereGeometry(0.28, 16, 12);
+const breast = new THREE.Mesh(breastGeom, bodyMat);
+breast.position.set(0.28, -0.08, 0.26);
+breast.castShadow = true;
+dove.add(breast);
+
+// — Neck —
+const neckGeom = new THREE.CylinderGeometry(0.14, 0.18, 0.28, 12);
+const neck = new THREE.Mesh(neckGeom, headMat);
+neck.position.set(0.46, 0.14, 0.0);
+neck.rotation.z = -0.55;
+neck.castShadow = true;
+dove.add(neck);
+
+// — Head —
+const headGeom = new THREE.SphereGeometry(0.19, 18, 14);
+const head = new THREE.Mesh(headGeom, headMat);
+head.position.set(0.68, 0.26, 0.0);
+head.castShadow = true;
+dove.add(head);
+
+// — Eye —
+const eyeGeom = new THREE.SphereGeometry(0.038, 10, 8);
+const eye = new THREE.Mesh(eyeGeom, eyeMat);
+eye.position.set(0.82, 0.32, 0.12);
+dove.add(eye);
+const shine = new THREE.Mesh(new THREE.SphereGeometry(0.013, 6, 6), eyeShine);
+shine.position.set(0.835, 0.335, 0.135);
+dove.add(shine);
+
+// — Beak —
+const beakGeom = new THREE.ConeGeometry(0.04, 0.16, 8);
+const beak = new THREE.Mesh(beakGeom, beakMat);
+beak.position.set(0.88, 0.22, 0.0);
+beak.rotation.z = Math.PI * 0.5;
+dove.add(beak);
+
+// — Tail feathers —
+function makeTailFeather(offsetY, rotZ) {
+  const pts = [];
+  for (let i = 0; i <= 12; i++) {
+    const t = i / 12;
+    pts.push(new THREE.Vector2(t * 0.55, Math.sin(t * Math.PI) * 0.07 * (1 - t * 0.3)));
+  }
+  const shape = new THREE.Shape();
+  shape.moveTo(0, 0);
+  shape.bezierCurveTo(0.15, 0.06 + offsetY, 0.4, 0.07 + offsetY, 0.56, 0.0 + offsetY * 0.3);
+  shape.bezierCurveTo(0.4, -0.04 - offsetY, 0.15, -0.03 - offsetY, 0, 0);
+  const geom = new THREE.ShapeGeometry(shape, 10);
+  const mesh = new THREE.Mesh(geom, tailMat);
+  mesh.rotation.z = rotZ;
+  return mesh;
+}
+const tailGroup = new THREE.Group();
+tailGroup.position.set(-0.46, -0.05, 0);
+[-0.04, 0, 0.04].forEach((dy, i) => {
+  const f = makeTailFeather(0, dy * 1.2);
+  f.position.set(0, dy * 0.3, (i - 1) * 0.08);
+  tailGroup.add(f);
+});
+dove.add(tailGroup);
+
+// — Wing builder (one side) —
+function buildWing(side) {
+  // side: +1 = top/near, -1 = far
+  const wingGroup = new THREE.Group();
+
+  // primary feathers (5 large)
+  for (let i = 0; i < 5; i++) {
+    const t  = i / 4;
+    const len = 0.55 + t * 0.18;
+    const shape = new THREE.Shape();
+    shape.moveTo(0, 0);
+    shape.bezierCurveTo(len * 0.3, 0.09, len * 0.7, 0.1, len, 0.02);
+    shape.bezierCurveTo(len * 0.7, -0.03, len * 0.3, -0.03, 0, 0);
+    const geom = new THREE.ShapeGeometry(shape, 8);
+    const mat  = i < 3 ? wingMat : wingTipMat;
+    const mesh = new THREE.Mesh(geom, mat);
+    mesh.position.set(0.05 * i * 0.5, -0.04 * i, (i - 2) * 0.07 * side);
+    mesh.rotation.y = -0.08 * i * side;
+    wingGroup.add(mesh);
+  }
+
+  // secondary feathers (4 medium)
+  for (let i = 0; i < 4; i++) {
+    const shape = new THREE.Shape();
+    const len   = 0.35 + i * 0.03;
+    shape.moveTo(0, 0);
+    shape.bezierCurveTo(len * 0.3, 0.07, len * 0.7, 0.07, len, 0.01);
+    shape.bezierCurveTo(len * 0.7, -0.025, len * 0.3, -0.025, 0, 0);
+    const geom = new THREE.ShapeGeometry(shape, 6);
+    const mesh = new THREE.Mesh(geom, wingMat);
+    mesh.position.set(-0.03 - i * 0.03, 0.06, (-2 + i) * 0.09 * side);
+    wingGroup.add(mesh);
+  }
+
+  // covert panel
+  const covertShape = new THREE.Shape();
+  covertShape.moveTo(0, 0);
+  covertShape.bezierCurveTo(0.18, 0.12, 0.42, 0.14, 0.58, 0.04);
+  covertShape.bezierCurveTo(0.42, -0.06, 0.18, -0.07, 0, 0);
+  const covertGeom = new THREE.ShapeGeometry(covertShape, 10);
+  const covert = new THREE.Mesh(covertGeom, wingMat);
+  covert.position.set(0, 0.05, 0);
+  wingGroup.add(covert);
+
+  // quill lines (drawn as thin boxes)
+  for (let i = 0; i < 5; i++) {
+    const quill = new THREE.Mesh(
+      new THREE.BoxGeometry(0.5 + i * 0.04, 0.005, 0.004),
+      new THREE.MeshStandardMaterial({ color: 0xc8b48a, roughness: 0.7 })
+    );
+    quill.position.set(0.25, -0.02 * i, (i - 2) * 0.07 * side);
+    wingGroup.add(quill);
+  }
+
+  return wingGroup;
+}
+
+// Shoulder pivots
+const leftShoulder  = new THREE.Group(); // top wing
+leftShoulder.position.set(0, 0.1, 0.0);
+const rightShoulder = new THREE.Group(); // bottom wing
+rightShoulder.position.set(0, 0.1, 0.0);
+
+const leftWing  = buildWing(1);
+const rightWing = buildWing(-1);
+
+leftWing.rotation.set(0.1, 0.0, 0.0);
+rightWing.rotation.set(-0.1, 0.0, 0.0);
+
+leftShoulder.add(leftWing);
+rightShoulder.add(rightWing);
+dove.add(leftShoulder);
+dove.add(rightShoulder);
+
+// — Letter / parchment attached under breast —
+const letterGroup = new THREE.Group();
+letterGroup.position.set(0.1, -0.38, 0.0);
+
+// parchment body
+const parchGeom = new THREE.BoxGeometry(0.28, 0.0025, 0.22);
+const parch     = new THREE.Mesh(parchGeom, parchMat);
+letterGroup.add(parch);
+
+// folded envelope flap
+const flapShape = new THREE.Shape();
+flapShape.moveTo(-0.14, 0.11);
+flapShape.lineTo(0, -0.01);
+flapShape.lineTo(0.14, 0.11);
+flapShape.lineTo(-0.14, 0.11);
+const flapGeom = new THREE.ShapeGeometry(flapShape, 4);
+const flap = new THREE.Mesh(flapGeom, parchMat);
+flap.rotation.x = -Math.PI * 0.5;
+flap.position.y = 0.002;
+letterGroup.add(flap);
+
+// wax seal
+const sealGeom = new THREE.CylinderGeometry(0.038, 0.038, 0.012, 16);
+const seal = new THREE.Mesh(sealGeom, sealMat);
+seal.position.set(0, 0.008, 0);
+letterGroup.add(seal);
+
+// "L" embossed on seal (thin disc)
+const embossGeom = new THREE.CylinderGeometry(0.025, 0.025, 0.004, 12);
+const embossMat  = new THREE.MeshStandardMaterial({ color: 0xd4a060, roughness: 0.4 });
+const emboss = new THREE.Mesh(embossGeom, embossMat);
+emboss.position.set(0, 0.016, 0);
+letterGroup.add(emboss);
+
+// ribbon ties
+[-0.06, 0.06].forEach(x => {
+  const rib = new THREE.Mesh(
+    new THREE.BoxGeometry(0.008, 0.004, 0.24),
+    ribbonMat
+  );
+  rib.position.set(x, 0.006, 0);
+  letterGroup.add(rib);
+});
+
+dove.add(letterGroup);
+
+// ── Flight state machine ──────────────────
+let phase      = 'approach'; // approach → hover → land → idle
+let wingAngle  = 0;
+let wingDir    = 1;
+const FLAP_SPEED  = 0.055; // rad per frame at 60fps
+const FLAP_MAX    = 1.1;   // max wing rotation (radians)
+const FLAP_MIN    = -0.55;
+
+// Initial far position (distant, small)
+dove.position.set(-8, 2.5, -6);
+dove.rotation.y = 0.3;
+dove.scale.setScalar(0.28);
+
+// ── GSAP cinematic flight path ────────────
+const tl = gsap.timeline({ delay: 0.6 });
+
+// 1. Approach from distance — bird grows from dot
+tl.to(dove.position, {
+  x: -1.2, y: 0.6, z: 1.8,
+  duration: 2.6,
+  ease: 'power2.inOut'
+}, 0)
+.to(dove.scale, {
+  x: 0.68, y: 0.68, z: 0.68,
+  duration: 2.6, ease: 'power2.inOut'
+}, 0)
+.to(dove.rotation, {
+  y: -0.1, duration: 2.6, ease: 'power2.inOut'
+}, 0);
+
+// 2. Arc pass — sweeps in front of camera
+tl.to(dove.position, {
+  x: 0.6, y: -0.1, z: 3.2,
+  duration: 1.8, ease: 'power1.inOut'
+})
+.to(dove.scale, {
+  x: 0.9, y: 0.9, z: 0.9,
+  duration: 1.8, ease: 'power1.inOut'
+}, '<');
+
+// 3. Hover — slow gentle float in front of viewer
+tl.to(dove.position, {
+  x: 0, y: 0.1, z: 3.6,
+  duration: 1.2, ease: 'power2.out',
+  onComplete: () => { phase = 'hover'; }
+})
+.to(dove.scale, {
+  x: 1.0, y: 1.0, z: 1.0,
+  duration: 1.2, ease: 'power2.out'
+}, '<')
+.to(dove.rotation, { y: 0.0, duration: 1.2, ease: 'power2.out' }, '<');
+
+// 4. After 2.2s hovering, descend to perch (branch position)
+tl.to(dove.position, {
+  x: 0.1, y: -0.55, z: 3.3,
+  duration: 1.4, ease: 'power3.inOut',
+  delay: 2.2,
+  onStart: () => { phase = 'land'; }
+})
+.to(dove.rotation, {
+  x: 0.18, duration: 1.4, ease: 'power2.inOut'
+}, '<')
+.to(dove.scale, {
+  x: 0.95, y: 0.95, z: 0.95,
+  duration: 1.4, ease: 'power2.inOut'
+}, '<');
+
+// 5. Idle perch — tiny bob
+tl.to(dove.position, {
+  y: '-=0.04',
+  duration: 0.18, ease: 'power2.in',
+  onComplete: () => { phase = 'idle'; }
+})
+.to(dove.position, {
+  y: '+=0.04',
+  duration: 0.22, ease: 'bounce.out'
+});
+
+// ── Perch branch ──────────────────────────
+(function buildBranch() {
+  const mat = new THREE.MeshStandardMaterial({ color: 0x5a3e1b, roughness: 0.9 });
+  const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.035, 2.4, 10), mat);
+  trunk.rotation.z = Math.PI * 0.5;
+  trunk.position.set(0, -0.75, 3.1);
+  scene.add(trunk);
+
+  // small side twig
+  const twig = new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.018, 0.9, 8), mat);
+  twig.rotation.z = -0.4;
+  twig.position.set(-0.55, -0.42, 3.1);
+  scene.add(twig);
+})();
+
+// ── Idle hover tween (loops after landing) ─
+let idleTween = null;
+function startIdleHover() {
+  if (idleTween) return;
+  idleTween = gsap.to(dove.position, {
+    y: '+=0.08',
+    duration: 1.8,
+    ease: 'sine.inOut',
+    yoyo: true,
+    repeat: -1
+  });
+}
+
+// ── Wing flapping per-phase ───────────────
+function updateWings(dt) {
+  const speed = phase === 'land' ? FLAP_SPEED * 0.5
+              : phase === 'idle' ? FLAP_SPEED * 0.15
+              : FLAP_SPEED;
+  const max   = phase === 'idle' ? 0.18 : FLAP_MAX;
+  const min   = phase === 'idle' ? -0.08 : FLAP_MIN;
+
+  wingAngle += speed * wingDir * (dt * 60);
+  if (wingAngle >= max) { wingAngle = max; wingDir = -1; }
+  if (wingAngle <= min) { wingAngle = min; wingDir =  1; }
+
+  leftShoulder.rotation.z  = -wingAngle;
+  rightShoulder.rotation.z =  wingAngle;
+
+  // natural droop: wings dip slightly relative to body tilt
+  const bodyTilt = dove.rotation.z;
+  leftShoulder.rotation.x  =  bodyTilt * 0.3;
+  rightShoulder.rotation.x = -bodyTilt * 0.3;
+}
+
+// ── Letter sway ───────────────────────────
+function updateLetter(t) {
+  letterGroup.rotation.x = Math.sin(t * 1.4) * 0.08;
+  letterGroup.rotation.z = Math.sin(t * 0.9 + 0.5) * 0.06;
+}
+
+// ── Head stabilisation ───────────────────
+let headBase = new THREE.Vector3(0.68, 0.26, 0.0);
+function updateHead(t) {
+  // subtle counter-rotation to fake stabilisation
+  head.position.x = headBase.x + Math.sin(t * 2.1) * 0.012;
+  head.position.y = headBase.y + Math.cos(t * 1.7) * 0.008;
+  eye.position.x  = 0.82 + Math.sin(t * 2.1) * 0.012;
+  eye.position.y  = 0.32 + Math.cos(t * 1.7) * 0.008;
+  shine.position.x = 0.835 + Math.sin(t * 2.1) * 0.012;
+  shine.position.y = 0.335 + Math.cos(t * 1.7) * 0.008;
+  beak.position.x  = 0.88 + Math.sin(t * 2.1) * 0.012;
+  beak.position.y  = 0.22 + Math.cos(t * 1.7) * 0.008;
+}
+
+// ── Tail flutter ─────────────────────────
+function updateTail(t) {
+  tailGroup.rotation.z = Math.sin(t * 2.6) * 0.05;
+  tailGroup.rotation.y = Math.cos(t * 1.9) * 0.04;
+}
+
+// ── Body tilt with flight direction ──────
+let prevX = dove.position.x;
+function updateBodyTilt() {
+  const dx = dove.position.x - prevX;
+  dove.rotation.z = dx * 1.5;
+  prevX = dove.position.x;
+}
+
+// ── Render loop ───────────────────────────
+const clock = new THREE.Clock();
+let time = 0;
+
+(function animate() {
+  requestAnimationFrame(animate);
+  const dt = clock.getDelta();
+  time += dt;
+
+  updateWings(dt);
+  updateLetter(time);
+  updateHead(time);
+  updateTail(time);
+  updateBodyTilt();
+
+  if (phase === 'idle') startIdleHover();
+
+  renderer.render(scene, camera);
+})();
+
+// ── Click: preserve existing openNote() ──
+// The original listener is on #openBird (parent div),
+// so the canvas click bubbles up — no change needed.
+// Visual feedback: letter pulses on click
+stage.addEventListener('click', () => {
+  gsap.to(letterGroup.scale, {
+    x: 1.35, y: 1.35, z: 1.35,
+    duration: 0.18, ease: 'power2.out',
+    onComplete: () => {
+      gsap.to(letterGroup.scale, { x: 1, y: 1, z: 1, duration: 0.3, ease: 'elastic.out(1,0.5)' });
+    }
+  });
+});
+
+// ── Touch / hover: bird turns to face cursor ─
+stage.addEventListener('pointermove', e => {
+  if (phase !== 'hover' && phase !== 'idle') return;
+  const rect = canvas.getBoundingClientRect();
+  const nx   = ((e.clientX - rect.left) / rect.width  - 0.5) * 2;
+  const ny   = -((e.clientY - rect.top)  / rect.height - 0.5) * 2;
+  gsap.to(dove.rotation, {
+    y: nx * 0.3,
+    x: ny * 0.12,
+    duration: 0.6,
+    ease: 'power2.out',
+    overwrite: 'auto'
+  });
+});
+</script>
+</body>
+</html>
